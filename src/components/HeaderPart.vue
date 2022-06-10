@@ -56,9 +56,8 @@
 }
 
 .user-menu{
-  display: inline-block;
-  width: 130px;
-  padding: 0px 0px 0px 130px;
+  width: 130px; 
+  padding: 0px 0px 0px 160px;
   text-align: right;
   vertical-align: top;
 }

@@ -12,10 +12,10 @@ const routes = [
   {
     path: '/productPage',
     name: 'productPage',
-    component: () => import('@/views/ProductPage'),
+    component: ProductPage
   },
 ];
-
+ 
 
 export const router = createRouter({
   history: createWebHistory(),

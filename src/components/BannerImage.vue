@@ -5,7 +5,7 @@
         <button @click="prev" class="prev">Prev</button>
     </div>
 </template>
-
+ 
 <script>
 export default {
     data(){  //데이터 보관함
