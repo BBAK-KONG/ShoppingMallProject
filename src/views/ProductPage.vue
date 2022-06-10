@@ -1,19 +1,52 @@
 <template>
-  <div id = product-explain>
-    This page is ProductPage
+  <div id="product-image">
+    <img src="@/assets/lion.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
   </div>
+
+  <div id="product-explain">
+    <p id="product-name">{{productName[0]}}</p>
+    <p id="product-price">{{productPrice[1]}}원</p>
+  </div>
+
+  <div id="product-detail">
+  </div>
+  <div id="purchase-button">
+    <button type="button" class="btn btn-primary btn-lg btn-block">구매하기</button>
+  </div>
+
 </template>
 
 <script>
 export default {
+  data(){
+    return{
+      productName : ["라이언노트", "어피치노트"],
+      productPrice : [29000, 30000],
+    }
+  }
 }
 </script>
 
 <style>
-#product-explain {
-  margin-top: 100px;
-  width: 100%;
-  height: 500px;
-  background-color: #ecfbcc;
+#product-image {
+  margin-top: 200px;
+  text-align: center;
 } 
+
+#product-explain{
+  margin-top: 20px;
+}
+
+#product-name{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#product-price{
+  font-weight: bold;
+}
+
+#purchase-button{
+  display: block;
+}
 </style>
