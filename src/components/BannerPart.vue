@@ -1,66 +1,24 @@
 <template>
-  <div>
-    <banner-image
-      @next="next"
-      @prev="prev"
-    >
-      <banner-slide v-for="(item, index) in slides" 
-        :key="item" 
-        :index="index"
-        :visibleSlide="visibleSlide">  
-        <img class="banner-img" :src="require(`@/assets/${item}.jpg`)"/>
-      </banner-slide>
-    </banner-image>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="@/assets/lion.jpg" class="d-block w-50" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="@/assets/apeach.jpg" class="d-block w-50" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="@/assets/tube.jpg" class="d-block w-50" alt="...">
+      </div>
+    </div> 
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 </template>
-
-<script> 
-import BannerImage from './BannerImage.vue';
-import BannerSlide from './BannerSlide.vue';
-
-export default {
-  data(){  //데이터 보관함
-    return {
-      slides: [
-        "lion",
-        "tube",
-        "apeach",
-      ],
-      visibleSlide : 0
-    }
-  },
-  computed: {
-    slidesLen(){
-      return this.slides.length;
-    }
-  },
-  methods : {
-    next(){
-      if(this.visibleSlide >= this.slidesLen - 1){
-        this.visibleSlide = 0;
-      }
-      else{
-        this.visibleSlide++;
-      }
-    },
-    prev(){
-      if(this.visibleSlide <= 0){
-        this.visibleSlide = this.slidesLen - 1;
-      }
-      else{
-        this.visibleSlide--;
-      }
-    }
-  },
-  components: {
-    BannerImage : BannerImage,
-    BannerSlide : BannerSlide
-  }
-}
-</script>
-
-<style>
-  .banner-img{
-    height: 500px;
-  }
-</style>
