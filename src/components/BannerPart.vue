@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script>
+<script> 
 import BannerImage from './BannerImage.vue';
 import BannerSlide from './BannerSlide.vue';
 

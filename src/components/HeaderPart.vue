@@ -1,27 +1,32 @@
 <template>
-<div>
-  <div class="menu" align="right">
-    <a>로그인</a>
-    <a>회원가입</a>
-  </div>
+  <div>
+    <div id="header">
+      <div class="header-inner">
+        <div class="menu" align="right">
+          <a>로그인</a>
+          <a>회원가입</a>
+        </div>
 
-  <span calss="logo">
-    <img class="logo-img" src = "@/assets/header-image/logo.jpg"/>
-    <input class="searchInput" type="text">
-    <span class="user-menu">
-      <img class="cart-img" src = "@/assets/header-image/cart.png"/>
-      <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
-    </span>
-  </span>
+        <span calss="logo">
+          <img class="logo-img" src = "@/assets/header-image/logo.jpg"/>
+          <input class="searchInput" type="text">
+          <span class="user-menu">
+            <img class="cart-img" src = "@/assets/header-image/cart.png"/>
+            <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
+          </span>
+        </span>
 
-  <div class="category">
-    <div class="category-img-part">
-      <img class="category-image" src = "@/assets/header-image/category.png"/>
+        <div class="category">
+          <div class="category-img-part">
+            <img class="category-image" src = "@/assets/header-image/category.png"/>
+          </div>
+          <a>베스트</a>
+          <a>신상</a>
+        </div>
+        
+      </div>
     </div>
-    <a>베스트</a>
-    <a>신상</a>
   </div>
-</div>
 </template>
 
 <style>
@@ -90,6 +95,17 @@
   width: 33%;
   display: flex;
   text-align: center;
+}
+
+#header {
+  width: 100%;
+  height: 100px;
+}
+
+.header-inner {
+  width: 1200px;
+  height: 100px;
+  margin: 0 auto;
 }
 
 </style>
