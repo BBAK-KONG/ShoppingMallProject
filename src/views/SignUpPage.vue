@@ -1,0 +1,135 @@
+<template>
+<div class="container">
+    <div class="row">
+        <h3 class="col-sm-offset-3 col-sm-6">회원가입</h3>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="" method="post" accept-charset="utf-8" class="form" role="form">
+                <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                        <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="성"/>
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="이름"/>
+                    </div>
+                </div>
+                <input type="text" name="id" value="" class="form-control input-lg" placeholder="아이디"/>
+                <input type="password" name="password" value="" class="form-control input-lg" placeholder="비밀번호"/>
+                <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="비밀번호 확인"/>
+                <input type="text" name="email" value="" class="form-control input-lg" placeholder="이메일"/>
+                <input type="text" name="address" value="" class="form-control input-lg" placeholder="주소"/>
+                    <label>생년월일</label>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4">
+                            <select name="month" class = "form-control input-lg">
+                                <option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option>
+                                <option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option>
+                                <option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option>
+                                <option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <select name="day" class = "form-control input-lg">
+                                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+                                <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+                                <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
+                                <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="21">21</option>
+                                <option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option>
+                                <option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option>
+                                <option value="30">30</option><option value="31">31</option>
+                            </select>                        
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <select name="year" class = "form-control input-lg">
+                                <option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option>
+                                <option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option>
+                                <option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option>
+                                <option value="2013">2013</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="gender-pick">
+                        <label>성별 :</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="gender" value="M" id=male />남
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="gender" value="F" id=female />여
+                        </label>
+                    </div>
+                    <br /><br /><br />
+                <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">회원가입</button>
+            </form>          
+        </div>
+      </div>
+    </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+.container{
+    margin-top: 150px;
+    background-color: #ecfbcc;
+    text-align: center;
+}
+
+legend{
+   color:#141823;
+   font-size:25px;
+   font-weight:bold;
+}
+.signup-btn {
+  background: #79bc64;
+  background-image: -webkit-linear-gradient(top, #79bc64, #578843);
+  background-image: -moz-linear-gradient(top, #79bc64, #578843);
+  background-image: -ms-linear-gradient(top, #79bc64, #578843);
+  background-image: -o-linear-gradient(top, #79bc64, #578843);
+  background-image: linear-gradient(to bottom, #79bc64, #578843);
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  text-shadow: 0px 1px 0px #898a88;
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: solid #3b6e22  1px;
+  text-decoration: none;
+}
+
+.signup-btn:hover {
+  background: #79bc64;
+  background-image: -webkit-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -moz-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -ms-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -o-linear-gradient(top, #79bc64, #5e7056);
+  background-image: linear-gradient(to bottom, #79bc64, #5e7056);
+  text-decoration: none;
+}
+.navbar-default .navbar-brand{
+      color:#fff;
+      font-size:30px;
+      font-weight:bold;
+}
+.form .form-control { margin-bottom: 10px; }
+@media (min-width:768px) {
+   #home{
+      margin-top:50px;
+   }
+   #home .slogan{
+      color: #0e385f;
+      line-height: 29px;
+      font-weight:bold;
+   }
+}
+</style>
