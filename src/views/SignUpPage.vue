@@ -82,6 +82,7 @@ export default {
 
 .col-sm-6{
     margin-left: 310px; 
+    padding-top: 20px;
 }
 
 .signup-btn {
@@ -95,4 +96,9 @@ export default {
 .form .form-control { 
     margin-bottom: 20px; 
 }
+
+.radio-inline{
+    padding-left: 10px;
+}
+
 </style>
