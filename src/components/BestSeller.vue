@@ -1,47 +1,47 @@
 <template>
   <h1>주간 베스트 상품</h1>
+
   <div class="container">
     <div class="row g-5">
-      <div class="col-4">
+      <div class="col-4" v-for="product in products" :key="product">
         <div class="card">
-          <img src="@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg" class="card-img-top" alt="...">
+          <img :src="product.image" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">라이언과 춘식이의 전자시계</h5>
-            <p class="card-text">49,000원</p>
-            <a href="#" class="btn btn-primary">구매하기</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="card">
-          <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">라이언 리틀 얼굴쿠션</h5>
-            <p class="card-text">16,000원</p>
-            <a href="#" class="btn btn-primary">구매하기</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-4">
-        <div class="card">
-          <img src="@/assets/best-seller/Ice-Mug-Apeach.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">시원한아이스머그_어피치</h5>
-            <p class="card-text">10,000원</p>
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{product.price}}</p>  
             <a href="#" class="btn btn-primary">구매하기</a>
           </div>
         </div>
       </div>
     </div>
+    <!-- 베스트 상품 목록 -->
     <div class="best-seller-button">
       <button type="button" class="btn btn-outline-success">베스트 상품 더 보기</button>
     </div>
-
-    
+    <!-- 베스트 상품 더 보기 버튼 -->
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      products:[
+        { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
+          name: "라이언과 춘식이의 전자시계", 
+          price: "49,000원",},
+        { image: require('@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg'), 
+          name: "라이언 리틀 얼굴쿠션", 
+          price: "16,000원",},
+        { image: require('@/assets/best-seller/Ice-Mug-Apeach.jpg'), 
+          name: "시원한아이스머그_어피치", 
+          price: "10,000원",}
+      ]
+    }
+  }
+}
+</script>
+>
 
 <style>
 
