@@ -20,6 +20,7 @@
           <div class="category-img-part">
             <img class="category-image" src = "@/assets/header-image/category.png"/>
           </div>
+          <a>전체 상품</a>
           <a>베스트</a>
           <a>신상</a>
         </div>
@@ -80,7 +81,7 @@
 
 .category-img-part{
   float: left; 
-  width: 33%;
+  width: 25%;
   display: flex;
   text-align: center;
 }
@@ -91,7 +92,7 @@
 
 .category a{
   float: left; 
-  width: 33%;
+  width: 25%;
   display: flex;
   text-align: center;
 }

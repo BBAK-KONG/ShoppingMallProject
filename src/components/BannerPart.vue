@@ -1,5 +1,5 @@
 <template>
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="@/assets/lion.jpg" class="d-block w-50" alt="...">
@@ -22,3 +22,19 @@
     </button>
   </div>
 </template>
+
+<style>
+  .carousel-inner{
+    width: auto;
+    height:600px;
+  }
+  .carousel-item{
+    width: auto;
+    height:100%;
+  }
+  .d-block {
+    display:block;
+    width: auto;
+    height: 100%;
+  }
+</style>
