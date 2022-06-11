@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-
+      
       <div class="col-4">
         <div class="card">
           <img src="@/assets/best-seller/Ice-Mug-Apeach.jpg" class="card-img-top" alt="...">
@@ -45,8 +45,19 @@
 
 <style>
 
-  .card :hover{
-    transform: scale(1.1);
+  .card {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px 0px;
+    background: #fff;
+    transition: all 0.5s ease;  
+    cursor: pointer;
+    z-index: 10;
+    overflow: hidden 
+  }
+
+  .card:hover {
+    color: #fff;
+    transform: scale(1.025);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px 0px;
   }
 
   .best-seller-button{
