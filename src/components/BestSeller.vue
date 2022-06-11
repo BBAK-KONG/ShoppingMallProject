@@ -1,10 +1,11 @@
 <template>
-  <h1>주간 베스트 상품</h1>
+  <h2>주간 베스트 상품</h2>
 
   <div class="container">
     <div class="row g-5">
-      <div class="col-4" v-for="product in products" :key="product">
+      <div class="col-4" v-for="(product, index) in products" :key="product" :index="index">
         <div class="card">
+          <div class="rank-box"> <span class="rank">{{index + 1}}</span></div>
           <img :src="product.image" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
@@ -58,6 +59,24 @@ export default {
     color: #fff;
     transform: scale(1.025);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px 0px;
+  }
+
+  .card .rank-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: black;
+    color: white;
+    position: static;
+    transition: all ease
+  }
+
+  .card .rank{
+    font-size: 30px;
+    font-weight: 300;
   }
 
   .best-seller-button{
