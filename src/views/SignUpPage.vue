@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <img src="../assets/tattoo.png" class="rounded mx-auto d-block w-25" alt="상품이미지"> 
         <div class="row">
             <h3 class="col-sm-offset-3 col-sm-6">회원가입</h3>
         </div>
@@ -48,6 +49,7 @@
                     </div>
                     <br/><br/><br/>
                     <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">회원가입</button>
+                    <br/><br/><br/>
                 </form>          
             </div>
         </div>
