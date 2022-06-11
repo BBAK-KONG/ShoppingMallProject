@@ -1,13 +1,15 @@
 <template>
   <div class="title">
-    <h2>주간 베스트 상품</h2>
-    <h5>BBAK_KOONG's 주간 인기 상품을 만나보세요!</h5>
+    <h2>신상품</h2>
+    <h5>BBAK_KOONG's 신상품!</h5>
   </div>
   <div class="container">
     <div class="row g-5">
       <div class="col-4" v-for="(product, index) in products" :key="product" :index="index">
         <div class="card">
-          <div class="rank-box"> <span class="rank">{{index + 1}}</span></div>
+          <div class="card-header bg-white border-bottom-0">
+            <span class="new-mark">new!</span>
+          </div>
           <img :src="product.image" class="card-img-top" alt="product.name">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
@@ -18,8 +20,8 @@
       </div>
     </div>
     <!-- 베스트 상품 목록 -->
-    <div class="best-seller-button">
-      <button type="button" class="btn btn-outline-success">베스트 상품 더 보기</button>
+    <div class="new-product-button">
+      <button type="button" class="btn btn-outline-success">신상품 더 보기</button>
     </div>
     <!-- 베스트 상품 더 보기 버튼 -->
   </div>
@@ -30,15 +32,15 @@ export default {
   data() {
     return {
       products:[
-        { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
-          name: "라이언과 춘식이의 전자시계", 
-          price: "49,000",},
-        { image: require('@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg'), 
-          name: "라이언 리틀 얼굴쿠션", 
-          price: "16,000",},
-        { image: require('@/assets/best-seller/Ice-Mug-Apeach.jpg'), 
-          name: "시원한아이스머그_어피치", 
-          price: "10,000",}
+        { image: 'https://t1.kakaocdn.net/friends/prod/product/20220525112943571_8809814925477_8809814925477_AW_00.jpg', 
+          name: "머니건_라이언&춘식이", 
+          price: "19,900",},
+        { image: 'https://t1.kakaocdn.net/friends/prod/product/20220509104011136_8809814926313_8809814926313_AW_00.jpg', 
+          name: "핸디형 미니 선풍기_어피치", 
+          price: "22,000",},
+        { image: 'https://t1.kakaocdn.net/friends/prod/product/20220516120300962_8809814924654_8809814924654_AW_00.jpg', 
+          name: "10000mAh춘식이보조배터리", 
+          price: "49,000",}
       ]
     }
   }
@@ -66,25 +68,12 @@ export default {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px 0px;
   }
 
-  .card .rank-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-    height: 70px;
-    background-color: black;
-    color: white;
-    position: static;
-    transition: all ease
-  }
-
-  .card .rank{
+  .card .new-mark{
     font-size: 30px;
     font-weight: 300;
   }
 
-  .best-seller-button{
+  .new-product-button{
     margin: 30px 0px 30px 0px;
   }
 
