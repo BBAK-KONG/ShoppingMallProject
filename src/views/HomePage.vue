@@ -32,6 +32,8 @@ export default {
     NewProduct
   }
 }
+
+
 </script>
 
 <style>
@@ -51,12 +53,12 @@ export default {
 #best-seller {
   margin-top: 300px;
   width: 100%;
-  height: 800px;
+  height: 1600px;
 } 
 
 .best-seller-inner {
   width: 1200px;
-  height: 800px;
+  height: 1600px;
   margin: 0 auto;
 }
 
@@ -71,6 +73,5 @@ export default {
   height: 800px;
   margin: 0 auto;
 }
-
 
 </style>

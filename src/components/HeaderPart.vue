@@ -5,10 +5,12 @@
         <div class="menu" align="right">
           <a>로그인</a>
           <a>회원가입</a>
-        </div>
+        </div> 
 
         <span calss="logo">
-          <img class="logo-img" src = "@/assets/header-image/logo.jpg"/>
+          <a href="http://localhost:8080/">
+            <img class="logo-img" src = "@/assets/header-image/logo.jpg"/>
+          </a>
           <input class="searchInput" type="text">
           <span class="user-menu">
             <img class="cart-img" src = "@/assets/header-image/cart.png"/>
@@ -20,9 +22,9 @@
           <div class="category-img-part">
             <img class="category-image" src = "@/assets/header-image/category.png"/>
           </div>
-          <a>전체 상품</a>
-          <a>베스트</a>
-          <a>신상</a>
+          <a href="http://localhost:8080/AllProductsPage">전체 상품</a>
+          <a href="#">베스트</a>
+          <a href="#">신상</a>
         </div>
         
       </div>
@@ -31,6 +33,7 @@
 </template>
 
 <style>
+
 .menu{
   padding: 20px 0px 20px 0px;
 }
@@ -95,6 +98,9 @@
   width: 25%;
   display: flex;
   text-align: center;
+  font-size: 18px;
+  text-decoration-line: none;
+  color: black;
 }
 
 #header {

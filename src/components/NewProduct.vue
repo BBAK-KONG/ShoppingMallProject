@@ -1,7 +1,7 @@
 <template>
   <div class="title">
     <h2>신상품</h2>
-    <h5>BBAK_KOONG's 신상품!</h5>
+    <h5>BBAK_KONG's 신상품!</h5>
   </div>
   <div class="container">
     <div class="row g-5">

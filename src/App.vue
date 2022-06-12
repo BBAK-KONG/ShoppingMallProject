@@ -3,8 +3,8 @@
     <div id="wrap">
       <HeaderPart/>
       <router-view></router-view>
-      <button>
-        <a href="#" class="top-btn" >
+      <button class="top-btn" >
+        <a href="#">
           <img src="@/assets/header-image/topButton.png" width="50">
         </a>
       </button>
@@ -42,8 +42,7 @@ export default {
   position: fixed;
   bottom: 10%;
   right: 2%;
-  height: 60px;
-  width: 60px;
+  border: 0;
+  background-color:transparent;
 }
 </style>
- 

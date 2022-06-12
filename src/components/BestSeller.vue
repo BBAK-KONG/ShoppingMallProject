@@ -1,11 +1,12 @@
 <template>
   <div class="title">
     <h2>주간 베스트 상품</h2>
-    <h5>BBAK_KOONG's 주간 인기 상품을 만나보세요!</h5>
+    <h5>BBAK_KONG's 주간 인기 상품을 만나보세요!</h5>
   </div>
+
   <div class="container">
     <div class="row g-5">
-      <div class="col-4" v-for="(product, index) in products" :key="product" :index="index">
+      <div class="col-4" v-for="(product, index) in products" :key="product" :index="index" >
         <div class="card">
           <div class="rank-box"> <span class="rank">{{index + 1}}</span></div>
           <img :src="product.image" class="card-img-top" alt="product.name">
@@ -38,13 +39,21 @@ export default {
           price: "16,000",},
         { image: require('@/assets/best-seller/Ice-Mug-Apeach.jpg'), 
           name: "시원한아이스머그_어피치", 
-          price: "10,000",}
+          price: "10,000",},
+        { image: 'https://t1.kakaocdn.net/friends/prod/product/20200807170225137_8809721503959_AW_00.jpg', 
+          name: "목쿠션_어피치", 
+          price: "12,000",},
+        { image: 'https://t1.kakaocdn.net/friends/prod/product/20211209163903387_8809814920793_AW_03.jpg', 
+          name: "자석마스크걸이_라이언&춘식이", 
+          price: "15,000",},
+        { image: 'https://t1.kakaocdn.net/friends/prod/product/20220214140504221_8809814924562_AW_01.jpg', 
+          name: "춘식이 피규어주차번호판", 
+          price: "16,000",}
       ]
     }
   }
 }
 </script>
->
 
 <style>
   .title{
