@@ -3,9 +3,14 @@
     <div id="wrap">
       <HeaderPart/>
       <router-view></router-view>
+      <button>
+        <a href="#" class="top-btn" >
+          <img src="@/assets/header-image/topButton.png" width="50">
+        </a>
+      </button>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 import HeaderPart from './components/HeaderPart.vue';
@@ -31,6 +36,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.top-btn {
+  position: fixed;
+  bottom: 10%;
+  right: 2%;
+  height: 60px;
+  width: 60px;
 }
 </style>
  
