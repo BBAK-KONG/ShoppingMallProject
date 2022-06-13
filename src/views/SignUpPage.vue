@@ -41,7 +41,7 @@
                             <input type="text" name="email_address" id="email_address" class="form-control input-lg"/>
                         </div>
                         <div class="col-3">
-                            <select name="email_selected" id="email_selected" class="form-control input-lg" @change="chagngeEmailAddress">
+                            <select name="email_selected" id="email_selected" class="form-control input-lg" @change="changeEmailAddress">
                                 <option value="">직접입력</option> 
                                 <option value="naver.com">naver.com</option>
                                 <option value="gmail.com">gmail.com</option>
@@ -220,7 +220,7 @@ export default {
         }
     },
 
-    chagngeEmailAddress(){
+    changeEmailAddress(){
         let email_address = document.getElementById("email_address");
         let email_selected = document.getElementById("email_selected");
 
