@@ -1,6 +1,6 @@
 <template>
   <div id="product-image">
-    <img src="@/assets/lion.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
   </div>
 
   <div id="product-explain">
@@ -20,7 +20,7 @@
 export default {
   data(){
     return{
-      productName : ["라이언노트", "어피치노트"],
+      productName : ["라이언쿠션", "어피치노트"],
       productPrice : [29000, 30000],
     }
   }
