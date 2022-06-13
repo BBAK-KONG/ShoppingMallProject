@@ -74,7 +74,6 @@ export default {
                 break;  
             case "4월":
             case "6월":
-            case "8월":
             case "9월":
             case "11월":
                 this.maxDay = 30;
