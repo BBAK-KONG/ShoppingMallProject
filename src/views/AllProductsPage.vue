@@ -1,10 +1,11 @@
 <template>
   <div id="category">
       <div class="category-inner">
-        <div class="container">
+        <h3>전체 상품</h3>
+        <div class="container" style="margin-top:70px">
           <div class="row">
             <div class="col-3" v-for="category in category" :key="category">
-              <div class="character-card" style="width: 10em">
+              <div class="character-card" style="width: 10em" @click="changeCategory(category.name)">
                 <img :src="category.image" class="card-img-top" alt="category.name">
                 <div class="card-footer bg-white border-top-0">
                   <h5 class="card-title">{{ category.name }}</h5>
@@ -15,6 +16,25 @@
         </div>
       </div>
   </div>
+
+  <div id="product-list">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-4" v-for="(product, index) in productList" :key="product" :index="index" >
+          <div class="card">
+            <img :src="product.image" class="card-img-top" alt="product.name">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{product.price}}원</p>  
+              <a href="#" class="btn btn-primary">구매하기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </template>
 
 <script>
@@ -35,7 +55,6 @@ export default {
           name: "춘식이",
         },
       ],
-
       products:[
         { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
           name: "라이언과 춘식이의 전자시계", 
@@ -55,15 +74,52 @@ export default {
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20220214140504221_8809814924562_AW_01.jpg', 
           name: "춘식이 피규어주차번호판", 
           price: "16,000",}
-      ]
+      ],
+      productList:[]
     }
-  }
+  },
+  
+  methods: {
+    changeCategory(characther){
+      this.productList = [];
+
+      if(characther == '전체'){
+        for(let index=0; index<this.products.length; index++){
+          this.productList.push(this.products[index]);
+        }
+      }
+
+      if(characther == '라이언'){
+        for(let index=0; index<this.products.length; index++){
+          if(this.products[index].name.includes('라이언')){
+            this.productList.push(this.products[index]);
+          }
+        }
+      }
+
+      if(characther == '어피치'){
+        for(let index=0; index<this.products.length; index++){
+          if(this.products[index].name.includes('어피치')){
+            this.productList.push(this.products[index]);
+          }
+        }
+      }
+
+      if(characther == '춘식이'){
+        for(let index=0; index<this.products.length; index++){
+          if(this.products[index].name.includes('춘식이')){
+            this.productList.push(this.products[index]);
+          }
+        }
+      }
+    }
+  },
 }
-</script>
+</script> 
 
 <style>
   #category {
-  margin-top: 250px;
+  margin-top: 200px;
   width: 100%;
   height: 600px;
   } 

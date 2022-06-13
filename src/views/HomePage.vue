@@ -51,7 +51,7 @@ export default {
 }
 
 #best-seller {
-  margin-top: 300px;
+  margin-top: 150px;
   width: 100%;
   height: 1600px;
 } 
@@ -63,7 +63,7 @@ export default {
 }
 
 #new-product {
-  margin-top: 300px;
+  margin-top: 150px;
   width: 100%;
   height: 800px;
 } 
