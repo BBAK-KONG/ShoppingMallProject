@@ -1,14 +1,17 @@
 <template>
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="@/assets/lion.jpg" class="d-block w-50" alt="...">
+        <img src="@/assets/banner/banner1.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="@/assets/apeach.jpg" class="d-block w-50" alt="...">
+        <img src="@/assets/banner/banner2.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="@/assets/tube.jpg" class="d-block w-50" alt="...">
+        <img src="@/assets/banner/banner3.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="@/assets/banner/banner4.jpg" class="d-block w-100" alt="...">
       </div>
     </div> 
 
@@ -22,3 +25,19 @@
     </button>
   </div>
 </template>
+
+<style>
+  .carousel-inner{
+    width: auto;
+    height:600px;
+  }
+  .carousel-item{
+    width: auto;
+    height:100%;
+  }
+  .d-block {
+    display:block;
+    width: auto;
+    height: 100%;
+  }
+</style>
