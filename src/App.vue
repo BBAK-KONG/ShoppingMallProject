@@ -8,12 +8,14 @@
           <img src="@/assets/header-image/topButton.png" width="50">
         </a>
       </button>
+      <FooterPart/>
     </div>
   </div>
 </template> 
 
 <script>
 import HeaderPart from './components/HeaderPart.vue';
+import FooterPart from './components/FooterPart.vue';
 
 export default {
   name: 'App',
@@ -25,6 +27,7 @@ export default {
   },
   components: {
     HeaderPart,
+    FooterPart,
   }
 }
 </script>
