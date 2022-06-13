@@ -38,7 +38,6 @@ export default {
 
 <style>
 #banner {
-  margin-top: 100px;
   width: 100%;
   height: 600px;
   background-color: #ecfbcc;

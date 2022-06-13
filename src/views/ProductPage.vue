@@ -1,6 +1,14 @@
 <template>
   <div id="product-image">
     <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
   </div>
 
   <div id="product-explain">
@@ -11,7 +19,7 @@
   <div id="product-detail">
   </div>
   <div id="purchase-button">
-    <button type="button" class="btn btn-primary btn-lg btn-block">구매하기</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block fixed-bottom">구매하기</button>
   </div>
 
 </template>
@@ -29,7 +37,6 @@ export default {
 
 <style>
 #product-image {
-  margin-top: 200px;
   text-align: center;
 } 
 

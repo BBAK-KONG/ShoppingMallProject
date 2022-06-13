@@ -106,7 +106,7 @@
 
 #header {
   width: 100%;
-  height: 100px;
+  height: 250px;
 }
 
 .header-inner {

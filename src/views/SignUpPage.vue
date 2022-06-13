@@ -87,10 +87,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
 .container{
-    margin-top: 150px;
     background-color: #ecfbcc;
 }
 
