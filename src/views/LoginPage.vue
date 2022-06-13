@@ -28,7 +28,7 @@
                     </label>
                     </div>
                     <a href="#!" id="find-pw">비밀번호 찾기</a>
-                    <a href="#!" id="sign-up">회원가입</a>
+                    <a href="http://localhost:8080/SignUpPage" id="sign-up">회원가입</a>
                 </div>
 
                 <div class="text-center text-lg-start mt-4 pt-2">
