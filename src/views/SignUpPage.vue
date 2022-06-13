@@ -6,46 +6,79 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <form action="" method="post" accept-charset="utf-8" class="form" role="form">
+                <form action="" method="post" accept-charset="utf-8" class="form" role="form" name="signUp_form">
                     <div class="row">
                         <div class="col-xs-6 col-md-6">
-                            <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="성"/>
+                            <input type="text" name="firstname" id="firstname" class="form-control input-lg" placeholder="성"/>
                         </div>
                         <div class="col-xs-6 col-md-6">
-                            <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="이름"/>
-                        </div>
-                    </div>
-                    <input type="text" name="id" value="" class="form-control input-lg" placeholder="아이디"/>
-                    <input type="password" name="password" value="" class="form-control input-lg" placeholder="비밀번호"/>
-                    <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="비밀번호 확인"/>
-                    <input type="email" name="email" value="" class="form-control input-lg" placeholder="이메일"/>
-
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" id="postcode" name="postcode" value="" class="form-control input-lg" placeholder="우편번호">
-                        </div>
-                        <div class="col">
-                            <input type="button" @click="search" value="우편번호 찾기">
+                            <input type="text" name="lastname" id="lastname" class="form-control input-lg" placeholder="이름"/>
                         </div>
                     </div>
 
-                    <input type="text" id="address" class="form-control input-lg" placeholder="주소">
+                    <div class="row">
+                        <div class="col-9">
+                            <input type="text" name="id" id="id" class="form-control input-lg" placeholder="아이디 (영문자+숫자 조합 6~16자리)"/>
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-primary" type="button" @click="idCheck">아이디 체크</button>
+                        </div>
+                    </div>
+
+                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="비밀번호 (영문자+숫자+특수문자 조합 6~16자리)"/>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control input-lg" placeholder="비밀번호 확인"/>
+                    <input type="tel" name="mobile" id="mobile" class="form-control input-lg" placeholder="핸드폰번호 (-없이 숫자만 입력)"/>
+                    
+                    
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" name="email_id" id="email_id" class="form-control input-lg" placeholder="이메일"/>
+                        </div>
+                        <div class="col">
+                            <label>@</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="email_address" id="email_address" class="form-control input-lg"/>
+                        </div>
+                        <div class="col-3">
+                            <select name="email_selected" id="email_selected" class="form-control input-lg" @change="chagngeEmailAddress">
+                                <option value="">직접입력</option> 
+                                <option value="naver.com">naver.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="daum.net">daum.net</option>
+                                <option value="nate.com">nate.com</option>
+                            </select>
+                        </div>
+                    </div>
+        
+
+
+                    <div class="row">
+                        <div class="col-9">
+                            <input type="text" id="postcode" name="postcode" value="" class="form-control input-lg" placeholder="우편번호" disabled>
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-primary" type="button" @click="searchAddress">우편번호 찾기</button>
+                        </div>
+                    </div>
+
+                    <input type="text" id="address" class="form-control input-lg" placeholder="주소" disabled>
                     <input type="text" id="detailAddress" class="form-control input-lg" placeholder="상세주소">
 
                     <label>생년월일</label>
                     <div class="row">
                         <div class="col-xs-4 col-md-4">
-                            <select name="year" class = "form-control input-lg">
+                            <select name="year" id="year" class = "form-control input-lg">
                                 <option v-for="yearValue in 100" :key="2022 - yearValue" value=key>{{ 2022 - yearValue }}년</option>
                             </select>
                         </div>
                         <div class="col-xs-4 col-md-4">
-                            <select id = "month" name="month" class = "form-control input-lg" @change="setMaxDay">
+                            <select name="month" id="month" class = "form-control input-lg" @change="setMaxDay">
                                 <option v-for="monthValue in 12" :key="monthValue" value=monthValue>{{ monthValue }}월</option>
                             </select>
                         </div>
                         <div class="col-xs-4 col-md-4">
-                            <select name="day" class = "form-control input-lg">
+                            <select name="day" id="day" class = "form-control input-lg">
                                 <option v-for="dayValue in maxDay" :key="dayValue" value=dayValue>{{ dayValue }}일</option>
                             </select>                    
                         </div>
@@ -53,14 +86,14 @@
                     <div id="gender-pick">
                         <label>성별 :</label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender" value="M" id=male />남
+                            <input type="radio" name="gender" value="M" id="male" />남
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender" value="F" id=female />여
+                            <input type="radio" name="gender" value="F" id="female" />여
                         </label>
                     </div>
                     <br/><br/><br/>
-                    <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">회원가입</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="button" @click="checkValidation">회원가입</button>
                     <br/><br/><br/>
                 </form>          
             </div>
@@ -77,6 +110,126 @@ export default {
         }
     },
     methods: {
+    checkValidation(){
+        let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
+        let passwordRegexForm = /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*_+=-])(?=.*[0-9]).{6,16}$/;
+        let mobileRegexFrom = /^(01[0|1|6|7|8|9]|02|03[1-3]|04[1-4]|05[1-5]|06[1-4])([0-9]{3,4})([0-9]{4})$/;
+
+        let firstname = document.getElementById("firstname");
+        let lastname = document.getElementById("lastname");
+        let id = document.getElementById("id");
+        let password = document.getElementById("password");
+        let confirm_password = document.getElementById("confirm_password");
+        let mobile = document.getElementById("mobile");
+        let email_id = document.getElementById("email_id");
+        let email_address = document.getElementById("email_address");
+        let postcode = document.getElementById("postcode");
+        let address = document.getElementById("address");
+        let male = document.getElementById("male");
+        let female = document.getElementById("female");
+
+        if (firstname.value == ""){
+            alert("성을 입력해주세요");
+            firstname.focus();
+            return false;
+        }
+
+        if (lastname.value == ""){
+            alert("이름을 입력해주세요");
+            lastname.focus();
+            return false;
+        }
+
+        if (id.value == ""){
+            alert("아이디를 입력해주세요");
+            id.focus();
+            return false;
+        }
+
+        if(!idRegexForm.test(id.value)){
+            alert("아이디를 영문자+숫자 조합으로 6~16자리로 입력해주세요");
+            id.focus();
+            return false;
+        }
+
+        if (password.value == ""){
+            alert("비밀번호를 입력해주세요");
+            password.focus();
+            return false;
+        }
+
+        if (!passwordRegexForm.test(password.value)){
+            alert("비밀번호를 영문자+숫자+특수문자 조합으로 6~16자리로 입력해주세요");
+            password.focus();
+            return false;
+        }
+
+        if (confirm_password.value !== password.value)
+        {
+            alert("비밀번호가 일치하지 않습니다");
+            confirm_password.focus();
+            return false;
+        }
+
+        if (!mobileRegexFrom.test(mobile.value)){
+            alert("핸드폰번호를 형식에 맞게 입력해주세요");
+            mobile.focus();
+            return false
+        }
+
+        if (email_id.value == ""){
+            alert("이메일을 입력해주세요");
+            email_id.focus();
+            return false;
+        }
+
+        if (email_address.value == ""){
+            alert("이메일 주소를 입력해주세요");
+            email_address.focus();
+            return false;
+        }
+
+        if (postcode.value == "" && address.value == ""){
+            alert("주소를 입력해주세요");
+            address.focus();
+            return false;
+        }
+
+        if (!male.checked && !female.checked){
+            alert("성별을 체크해주세요");
+            male.focus();
+            return false;
+        }
+
+        document.signUp_form.submit();
+    },
+
+    idCheck(){
+        let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
+        let id = document.getElementById("id");
+        if (id.value == ""){
+            alert("아이디 입력후에 체크해주세요");
+        }
+        else if (idRegexForm.test(id.value)){
+            alert("사용가능한 아이디 입니다");
+        }
+        else{
+            alert("사용불가능한 아이디 입니다");
+            id.value = "";
+            id.focus();
+        }
+    },
+
+    chagngeEmailAddress(){
+        let email_address = document.getElementById("email_address");
+        let email_selected = document.getElementById("email_selected");
+
+        let selectedIndex = email_selected.options.selectedIndex;
+        let selectedEmailAddress = email_selected.options[selectedIndex].value;
+
+        email_address.value = selectedEmailAddress;
+    },
+
     setMaxDay() {
         let box = document.getElementById('month');
         let selectedMonth = box.options[box.selectedIndex].text;
@@ -96,13 +249,9 @@ export default {
                 break;
         }
     },
-    search() {
+    searchAddress() {
         new window.daum.Postcode({
             oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var addr = ''; // 주소 변수
 
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
