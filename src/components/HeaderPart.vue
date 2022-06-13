@@ -3,8 +3,8 @@
     <div id="header">
       <div class="header-inner">
         <div class="menu" align="right">
-          <a>로그인</a>
-          <a>회원가입</a>
+          <a href="http://localhost:8080/LoginPage">로그인</a>
+          <a href="http://localhost:8080/SignUpPage">회원가입</a>
         </div> 
 
         <span calss="logo">
@@ -40,6 +40,7 @@
 
 .menu a{
   padding: 0px 0px 0px 30px;
+  text-decoration:none;
 }
 
 .logo-img{
