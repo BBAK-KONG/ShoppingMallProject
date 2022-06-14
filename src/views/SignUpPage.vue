@@ -193,11 +193,13 @@ export default {
         }
 
         if (!male.checked && !female.checked){
-            alert("성별을 체크해주세요");
+            alert("성별을 체크해주세요");ㄴ
             male.focus();
             return false;
         }
         this.sendData();
+        alert("회원가입이 완료되었습니다!");
+
     },
 
     idCheck(){
