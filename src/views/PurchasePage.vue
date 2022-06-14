@@ -17,10 +17,12 @@
                 <tbody>
                   <tr>
                     <td class="item" style="margin-bottom:50px">{{ product.name }}</td>
-                    <button type="button" class="btn-close" aria-label="Close" style="float: right" @click="deleteProduct(product.name)"></button>
+                    <button type="button" class="btn-close" aria-label="Close" style="float: right" 
+                    @click="deleteProduct(product.name)" data-bs-toggle="modal" data-bs-target="#undeletableGuidanceModal">
+                    </button>
                   </tr>
                   <tr>
-                    <td class="item">{{product.price}}원</td>
+                    <td class="item">{{this.setComma(product.price)}}원</td>
                   </tr>
                 </tbody>
               </table>
@@ -55,10 +57,30 @@
                 총 결제금액
               </th>
               <td class="price">
-                <span>{{getTotalPrice()}}</span></td>
+                <span><strong>{{getTotalPrice()}}</strong></span></td>
             </tr>
           </tbody>
       </table>
+      
+      <!-- 현재 구매상품이 하나만 있는데 삭제하려고 할 경우 모달창을 띄움(구매상품이 최소 1개가 있어야 하기 때문) -->
+      <div class="modal fade" id="undeletableGuidanceModal" tabindex="-1" 
+      aria-labelledby="modalTitle" aria-hidden="true"
+      v-if="this.products.length == 1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitle">삭제 불가 안내</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h5>모든 상품을 제거하실 수 없습니다.<br>1개 이상의 상품을 선택해주세요.</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -91,6 +113,9 @@ export default {
     }
   },
   methods:{
+    setComma(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
     getSubTotal(){
       let sum = 0;
 
@@ -99,7 +124,7 @@ export default {
       } 
       this.subTotal = sum;
 
-      return this.subTotal + "원";
+      return this.setComma(this.subTotal) + "원";
     },
     getShipping(){
       if(this.subTotal < 30000){
@@ -109,11 +134,11 @@ export default {
       if(this.shipping == 0){
         return "무료";
       }
-      return this.shipping + "원";
+      return this.setComma(this.shipping) + "원";
     },
     getTotalPrice(){
       this.totalPrice = this.subTotal + this.shipping;
-      return this.totalPrice + "원";
+      return this.setComma(this.totalPrice) + "원";
     },
     deleteProduct(productName){
       if(this.products.length == 1){
