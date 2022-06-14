@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="container" v-for="(product, index) in products" :key="product" :index="index">
-    <div class="purchase-card">
+    <div class="purchase-card" >
       <div class="row">
         <div class="col-4">
           <img :src="product.image" class="img-fluid rounded-start" alt="product.name">
@@ -13,16 +13,30 @@
         <div class="col-8" style="float: left">
           <div class="card-body">
             <p class="card-text">
-              <table class="table">
+              <table class="table product-table">
                 <tbody>
                   <tr>
-                    <td class="item" style="margin-bottom:50px">{{ product.name }}</td>
+                    <!-- 상품명 -->
+                    <td class="item">{{ product.name }}</td>
                     <button type="button" class="btn-close" aria-label="Close" style="float: right" 
                     @click="deleteProduct(product.name)" data-bs-toggle="modal" data-bs-target="#undeletableGuidanceModal">
                     </button>
+                    
                   </tr>
                   <tr>
-                    <td class="item">{{this.setComma(product.price)}}원</td>
+                    <div class="row">
+                      <!-- 구매 수량 선택 -->
+                      <div class="col-6 quantity-selection">
+                        <select class="form-select" aria-label="quantity selection" @change="setQuantity(product.name, $event)" style="width:100px; font-size:20px;">
+                          <option value="" selected disabled hidden>{{ product.quantity }}</option>
+                          <option v-for="quantity in maxQuantity" :key="quantity" :value=quantity>{{quantity}}</option>
+                        </select>
+                      </div>
+                      <!-- 상품 총 가격(상품가격*구매량) -->
+                      <div class="col-6 subtotal">
+                        <td class="price">{{this.setComma(product.price * product.quantity)}}원</td>
+                      </div>
+                    </div>
                   </tr>
                 </tbody>
               </table>
@@ -41,7 +55,7 @@
                 상품금액
               </th>
               <td class="price">
-                <span>{{getSubTotal()}}</span>
+                <span>{{getSubtotal()}}</span>
               </td>
             </tr>
             <tr>
@@ -69,11 +83,10 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalTitle">삭제 불가 안내</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <h5>모든 상품을 제거하실 수 없습니다.<br>1개 이상의 상품을 선택해주세요.</h5>
+              <h5>모든 상품을 제거하실 수 없습니다.<br><br>1개 이상의 상품을 선택해주세요.</h5>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -99,35 +112,36 @@ export default {
         { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
           name: "라이언과 춘식이의 전자시계", 
           price: 49000,
-          quantity: "2"
+          quantity: 2
         },
         { image: require('@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg'), 
           name: "라이언 리틀 얼굴쿠션", 
           price: 16000,
-          quantity: "1"  
+          quantity: 1
         }
       ],
-      subTotal: 0,
+      subtotal: 0,
       shipping: 0,
-      totalPrice: 0
+      totalPrice: 0,
+      maxQuantity: 300
     }
   },
   methods:{
     setComma(value) {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
-    getSubTotal(){
+    getSubtotal(){
       let sum = 0;
 
       for(let index=0; index<this.products.length; index++){
-        sum += this.products[index].price;
+        sum += this.products[index].price * this.products[index].quantity;
       } 
-      this.subTotal = sum;
+      this.subtotal = sum;
 
-      return this.setComma(this.subTotal) + "원";
+      return this.setComma(this.subtotal) + "원";
     },
     getShipping(){
-      if(this.subTotal < 30000){
+      if(this.subtotal < 30000){
         this.shipping = 3000;
       }
       
@@ -137,7 +151,7 @@ export default {
       return this.setComma(this.shipping) + "원";
     },
     getTotalPrice(){
-      this.totalPrice = this.subTotal + this.shipping;
+      this.totalPrice = this.subtotal + this.shipping;
       return this.setComma(this.totalPrice) + "원";
     },
     deleteProduct(productName){
@@ -149,6 +163,13 @@ export default {
         if(this.products[index].name == productName){
           this.products.splice(index, 1);
           break;
+        }
+      }
+    },
+    setQuantity(productName, event){
+      for(let index=0; index<this.products.length; index++){
+        if(this.products[index].name == productName){
+          this.products[index].quantity = event.target.value;
         }
       }
     }
@@ -178,6 +199,7 @@ export default {
     height: 200px;
     border-bottom: 3px solid;
     border-color: #f0f0f0;
+    padding-right:0px;
   } 
 
   .container img{
@@ -190,6 +212,7 @@ export default {
   .card-body{
     width: 100%;
     height: 100px;
+    padding-right:0px;
   }
 
   .card-title{
@@ -220,4 +243,16 @@ export default {
     border-bottom: none;
   }
 
+  .product-table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .quantity-selection{
+    float: left;
+  }
+
+  .subtotal{
+    float: right;
+  }
 </style>
