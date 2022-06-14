@@ -193,7 +193,7 @@ export default {
         }
 
         if (!male.checked && !female.checked){
-            alert("성별을 체크해주세요");ㄴ
+            alert("성별을 체크해주세요");
             male.focus();
             return false;
         }
