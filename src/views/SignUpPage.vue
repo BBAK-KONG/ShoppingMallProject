@@ -99,6 +99,7 @@
 </template>
 
 <script>
+
 export default {
     data(){
         return{
@@ -199,20 +200,46 @@ export default {
         }
         this.sendData();
         alert("회원가입이 완료되었습니다!");
+        window.location.href = "http://localhost:8080/LoginPage"
 
     },
 
     idCheck(){
         let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
         let id = document.getElementById("id");
+        let password = document.getElementById("password");
+
         if (id.value == ""){
             alert("아이디 입력후에 체크해주세요");
         }
         else if (idRegexForm.test(id.value)){
-            alert("사용가능한 아이디 입니다");
+            let id = document.getElementById("id");
+            
+            fetch("http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/users/exist", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                user_id: id.value,
+            }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data['exist']){
+                    alert("이미 사용중인 아이디 입니다.");
+                    id.value = "";
+                    id.focus();
+                }
+                else{
+                    alert("사용가능한 아이디 입니다.");
+                    password.focus();
+                }
+            }
+            );
         }
         else{
-            alert("사용불가능한 아이디 입니다");
+            alert("아이디를 영문자+숫자 조합 6~16자리로 입력해주세요");
             id.value = "";
             id.focus();
         }
