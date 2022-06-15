@@ -356,7 +356,7 @@ export default {
 
   .payment-button{
     width: 400px;
-    height: 80px;
+    height: 100px;
     font-size: 25px;
   }
 
