@@ -8,7 +8,7 @@
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <!-- id input -->
             <div class="form-outline mb-4">
-                <input type="email" id="userId" class="form-control form-control-lg"
+                <input type="text" id="userId" class="form-control form-control-lg"
                 placeholder="아이디를 입력해주세요" />
             </div>
 
@@ -31,7 +31,7 @@
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
-                <button id ="login-button" type="button" class="btn btn-primary btn-lg" @click="getData">로그인</button>
+                <button id ="login-button" type="button" class="btn btn-primary btn-lg" @click="tryLogin">로그인</button>
             </div>
         </div>
         </div>
@@ -43,21 +43,39 @@ export default {
 
     data(){
         return{
-            userData: ""
+            isLoggedin: false
         }
     },
 
     methods: {
-        getData(){
-            fetch("http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/users", {
-                method: 'GET',
-            })
+        tryLogin(){
+            let id = document.getElementById("userId");
+            let password = document.getElementById("userPw");
+            
+            fetch("http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/users/login", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user_id: id.value,
+                    password: password.value,
+                }),
+                })
+            
+            
             .then(response => {
                 return response.json();
             })
             .then(data => {
-                this.userData = data;
-                console.log(this.userData);
+                this.isLoggedin = data["status"];
+                if(this.isLoggedin){    
+                    alert("성공!");
+                    window.location.href = "http://localhost:8080/"
+                }
+                else{
+                    alert("실패!");
+                }
             });
         },
         }
