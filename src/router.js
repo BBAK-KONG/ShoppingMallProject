@@ -4,6 +4,7 @@ import ProductPage from '@/views/ProductPage';
 import AllProductsPage from '@/views/AllProductsPage';
 import LoginPage from '@/views/LoginPage';
 import SignUpPage from '@/views/SignUpPage';
+import PurchasePage from '@/views/PurchasePage';
 
 const routes = [
   {
@@ -31,8 +32,13 @@ const routes = [
     name: 'SignUpPage',
     component: SignUpPage
   },
+  {
+    path: '/PurchasePage',
+    name: 'PurchasePage',
+    component: PurchasePage
+  },
 ];
- 
+
 
 export const router = createRouter({
   history: createWebHistory(),
