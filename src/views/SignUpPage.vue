@@ -20,7 +20,7 @@
                     <div class="col-9">
                         <input type="text" name="id" ref="id" @change="checkRegexId" class="form-control input-lg" placeholder="아이디 (영문자+숫자 조합 6~16자리)"/>
                     </div>
-                    <div class="col-3">
+                    <div id="checkButton" class="col-3">
                         <button class="btn btn-block btn-primary" type="button" @click="idCheck">아이디 체크</button>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <input type="text" ref="postcode" id="postcode" name="postcode" value="" class="form-control input-lg" placeholder="우편번호" disabled>
                     </div>
                     <div class="col-3">
-                        <button class="btn btn-block btn-primary" type="button" @click="searchAddress">우편번호 찾기</button>
+                        <button id="searchButton" class="btn btn-block btn-primary" type="button" @click="searchAddress">우편번호 찾기</button>
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@
                     </label>
                 </div>
                 <br/><br/><br/>
-                <button class="btn btn-lg btn-primary btn-block" type="button" @click="checkValidation">회원가입</button>
+                <button class="btn btn-lg btn-primary btn-block" type="button" @click="sendData">회원가입</button>
                 <br/><br/><br/>
             </div>
         </div>
@@ -104,56 +104,67 @@
     
 </template>
 
-<script>
+<script>    
 export default {
     data(){
         return{
-            maxDay: 31
+            maxDay: 31,
+            isIdCheck: false
         }
     },
     
     methods: {
+
     checkRegexId(){
         let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
         if(!idRegexForm.test(this.$refs.id.value) && this.$refs.id.value !== ""){
             this.$refs.idCheck.innerHTML = "아이디를 영문자+숫자 조합으로 6~16자리로 입력해주세요";
             this.$refs.id.focus();
+            return false;
         }
-        else{
-            this.$refs.idCheck.innerHTML = " ";
-        }
+        this.$refs.idCheck.innerHTML = " ";
+        return true;
     },
+
     checkRegexPw(){
         let passwordRegexForm = /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*_+=-])(?=.*[0-9]).{6,16}$/;
         if(!passwordRegexForm.test(this.$refs.password.value) && this.$refs.password.value !== ""){
             this.$refs.pwCheck.innerHTML = "비밀번호를 영문자+숫자+특수문자 조합으로 6~16자리로 입력해주세요";
             this.$refs.password.focus();
+            return false;
         }
-        else{
-            this.$refs.pwCheck.innerHTML = " ";
-        }
+        this.$refs.pwCheck.innerHTML = " ";
+        return true;
     },
+
     checkConfirmPw(){
         if (this.$refs.confirm_password.value !== this.$refs.password.value)
         {
             this.$refs.confirmPwCheck.innerHTML = "비밀번호가 일치하지 않습니다";
             this.$refs.confirm_password.focus();
+            return false;
         }
-        else{
-            this.$refs.confirmPwCheck.innerHTML = " ";
-        }
+        this.$refs.confirmPwCheck.innerHTML = " ";
+        return true;
+
     },
+
     checkPhone(){
         let phoneRegexForm = /^(01[0|1|6|7|8|9]|02|03[1-3]|04[1-4]|05[1-5]|06[1-4])([0-9]{3,4})([0-9]{4})$/;
         if(!phoneRegexForm.test(this.$refs.phone.value) && this.$refs.phone.value !== ""){
             this.$refs.phoneCheck.innerHTML = "올바른 번호를 입력해주세요";
             this.$refs.phone.focus();
+            return false;
         }
-        else{
-            this.$refs.phoneCheck.innerHTML = " ";
-        }
+        this.$refs.phoneCheck.innerHTML = " ";
+        return true;
     },
-    checkValidation(){
+
+    isAllDataValidation(){
+        let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
+        let passwordRegexForm = /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*_+=-])(?=.*[0-9]).{6,16}$/;
+        let phoneRegexForm = /^(01[0|1|6|7|8|9]|02|03[1-3]|04[1-4]|05[1-5]|06[1-4])([0-9]{3,4})([0-9]{4})$/;
+
         if (this.$refs.firstname.value == ""){
             alert("성을 입력해주세요");
             this.$refs.firstname.focus();
@@ -172,6 +183,11 @@ export default {
         if (this.$refs.password.value == ""){
             alert("비밀번호를 입력해주세요");
             this.$refs.password.focus();
+            return false;
+        }
+        if (this.$refs.phone.value == ""){
+            alert("핸드폰번호를 입력해주세요");
+            this.$refs.phone.focus();
             return false;
         }
         if (this.$refs.email_id.value == ""){
@@ -194,88 +210,44 @@ export default {
             this.$refs.male.focus();
             return false;
         }
-        this.sendData();
-        alert("회원가입이 완료되었습니다!");
-        window.location.href = "http://localhost:8080/LoginPage"
-    },
-    idCheck(){
-        let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
-        if (this.$refs.id.value == ""){
-            alert("아이디 입력후에 체크해주세요");
-        }
-        else if (idRegexForm.test(this.$refs.id.value)){            
-            fetch("http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/users/exist", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                user_id: this.$refs.id.value,
-            }),
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data['exist']){
-                    alert("이미 사용중인 아이디 입니다.");
-                    this.$refs.id.value = "";
-                    this.$refs.id.focus();
-                }
-                else{
-                    alert("사용가능한 아이디 입니다.");
-                    this.$refs.password.focus();
-                }
-            }
-            );
-        }
-        else{
-            alert("아이디를 영문자+숫자 조합 6~16자리로 입력해주세요");
-            this.$refs.id.value = "";
+
+        // 정규식 다시한번 체크하고 alert로 알려주기
+        if(!idRegexForm.test(this.$refs.id.value) && this.$refs.id.value !== ""){
+            this.$refs.idCheck.innerHTML = "아이디를 영문자+숫자 조합으로 6~16자리로 입력해주세요";
             this.$refs.id.focus();
+            return false;
         }
-    },
-    changeEmailAddress(){
-        let selectedIndex = this.$refs.email_selected.options.selectedIndex;
-        let selectedEmailAddress = this.$refs.email_selected.options[selectedIndex].value;
-        this.$refs.email_address.value = selectedEmailAddress;
-    },
-    setMaxDay() {
-        let box = this.$refs.month;
-        let selectedMonth = box.options[box.selectedIndex].text;
-        switch (selectedMonth)
+        
+        if(!passwordRegexForm.test(this.$refs.password.value) && this.$refs.password.value !== ""){
+            alert("비밀번호를 영문자+숫자+특수문자 조합으로 6~16자리로 입력해주세요");
+            this.$refs.password.focus();
+            return false;
+        }
+
+        if (this.$refs.confirm_password.value !== this.$refs.password.value)
         {
-            case "2월":
-                this.maxDay = 28;
-                break;  
-            case "4월":
-            case "6월":
-            case "9월":
-            case "11월":
-                this.maxDay = 30;
-                break;
-            default:
-                this.maxDay = 31;
-                break;
+            alert("비밀번호가 일치하지 않습니다");
+            this.$refs.confirm_password.focus();
+            return false;
         }
+
+        if(!phoneRegexForm.test(this.$refs.phone.value) && this.$refs.phone.value !== ""){
+            alert("올바른 번호를 입력해주세요");
+            this.$refs.phone.focus();
+            return false;
+        }
+        return true;
     },
-    searchAddress() {
-        new window.daum.Postcode({
-            oncomplete: function(data) {
-                var addr = ''; // 주소 변수
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('postcode').value = data.zonecode;
-                document.getElementById("address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("detailAddress").focus();
-            }
-        }).open();
-    },
+
     sendData(){
+    if (!this.isAllDataValidation()){
+        return;
+    }
+    if (!this.isIdCheck){
+        alert("아이디체크를 진행해주세요");
+        return;
+    }
+    
     let gender;
     if (this.$refs.male.checked){
         gender = this.$refs.male.value;
@@ -302,6 +274,91 @@ export default {
     })
     .then((response) => response.json())
     .then((data) => console.log(data));
+    alert("회원가입이 완료되었습니다!");
+    window.location.href = "http://localhost:8080/LoginPage"
+    },
+
+    idCheck(){
+        let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
+        if (this.$refs.id.value == ""){
+            alert("아이디 입력후에 체크해주세요");
+        }
+        else if (idRegexForm.test(this.$refs.id.value)){            
+            fetch("http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/users/exist", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                user_id: this.$refs.id.value,
+            }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data['exist']){
+                    alert("이미 사용중인 아이디 입니다.");
+                    this.isIdCheck = false;
+                    this.$refs.id.value = "";
+                    this.$refs.id.focus();
+                }
+                else{
+                    alert("사용가능한 아이디 입니다.");
+                    this.isIdCheck = true;
+                    this.$refs.password.focus();
+                }
+            }
+            );
+        }
+        else{
+            alert("아이디를 영문자+숫자 조합 6~16자리로 입력해주세요");
+            this.$refs.id.value = "";
+            this.$refs.id.focus();
+        }
+    },
+
+    changeEmailAddress(){
+        let selectedIndex = this.$refs.email_selected.options.selectedIndex;
+        let selectedEmailAddress = this.$refs.email_selected.options[selectedIndex].value;
+        this.$refs.email_address.value = selectedEmailAddress;
+    },
+
+    setMaxDay() {
+        let box = this.$refs.month;
+        let selectedMonth = box.options[box.selectedIndex].text;
+        switch (selectedMonth)
+        {
+            case "2월":
+                this.maxDay = 28;
+                break;  
+            case "4월":
+            case "6월":
+            case "9월":
+            case "11월":
+                this.maxDay = 30;
+                break;
+            default:
+                this.maxDay = 31;
+                break;
+        }
+    },
+
+    searchAddress() {
+        new window.daum.Postcode({
+            oncomplete: function(data) {
+                var addr = ''; // 주소 변수
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("detailAddress").focus();
+            }
+        }).open();
     },
     }
 }
@@ -316,12 +373,18 @@ export default {
     margin-left: 310px; 
 }
 .form-control { 
-    margin-bottom: 10px; 
+    margin-top: 20px; 
 }
 .radio-inline{
     padding-left: 10px;
 }
 span{
     color : red
+}
+#checkButton{
+    margin-top: 20px;
+}
+#searchButton{
+    margin-top: 20px;
 }
 </style>
