@@ -70,11 +70,7 @@ export default {
             .then(data => {
                 this.isLoggedin = data["status"];
                 if(this.isLoggedin){    
-                    alert("성공!");
                     window.location.href = "http://localhost:8080/"
-                }
-                else{
-                    alert("실패!");
                 }
             });
         },
