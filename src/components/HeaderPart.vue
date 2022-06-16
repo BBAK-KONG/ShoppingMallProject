@@ -13,7 +13,9 @@
           </a>
           <input class="searchInput" type="text">
           <span class="user-menu">
-            <img class="cart-img" src = "@/assets/header-image/cart.png"/>
+            <a href="http://localhost:8080/ShoppingCartPage">
+              <img class="cart-img" src = "@/assets/header-image/cart.png"/>
+            </a>
             <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
           </span>
         </span>
