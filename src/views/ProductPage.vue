@@ -1,14 +1,6 @@
 <template>
   <div id="product-image">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
-    <img src="@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg" class="rounded mx-auto d-block w-25" alt="상품이미지">
+    <img src='http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Face-Type-Mini-Cushion-Ryan.jpg' class="rounded mx-auto d-block w-25" alt="상품이미지">
   </div>
 
   <div id="product-explain">

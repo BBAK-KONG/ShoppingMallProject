@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="../assets/tattoo.png"
+            <img src= 'http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/tattoo.png'
             class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -70,11 +70,10 @@ export default {
             .then(data => {
                 this.isLoggedin = data["status"];
                 if(this.isLoggedin){    
-                    alert("성공!");
                     window.location.href = "http://localhost:8080/"
                 }
                 else{
-                    alert("실패!");
+                    alert("아이디 또는 비밀번호가 틀립니다.");
                 }
             });
         },

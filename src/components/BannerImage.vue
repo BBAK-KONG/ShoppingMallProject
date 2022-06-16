@@ -42,7 +42,6 @@ export default {
         right:0;
     }
     .prev{
-        background-image: url("@/assets/leftArrow.png");
         background: white;
         width: 50px;
         height: 50px;
