@@ -2,16 +2,16 @@
   <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="@/assets/banner/banner1.jpg" class="d-block w-100" alt="...">
+        <img src="http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/banner1.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="@/assets/banner/banner2.jpg" class="d-block w-100" alt="...">
+        <img src="http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/banner2.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="@/assets/banner/banner3.jpg" class="d-block w-100" alt="...">
+        <img src="http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/banner3.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="@/assets/banner/banner4.jpg" class="d-block w-100" alt="...">
+        <img src="http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/banner4.jpg" class="d-block w-100" alt="...">
       </div>
     </div> 
 

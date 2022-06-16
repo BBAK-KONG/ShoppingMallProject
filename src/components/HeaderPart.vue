@@ -9,18 +9,18 @@
 
         <span calss="logo">
           <a href="http://localhost:8080/">
-            <img class="logo-img" src = "@/assets/header-image/logo.jpg"/>
+            <img class="logo-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/logo.jpg"/>
           </a>
           <input class="searchInput" type="text">
           <span class="user-menu">
-            <img class="cart-img" src = "@/assets/header-image/cart.png"/>
-            <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
+            <img class="cart-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/cart.png"/>
+            <img class="myPage-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/myPage.png"/>
           </span>
         </span>
 
         <div class="category">
           <div class="category-img-part">
-            <img class="category-image" src = "@/assets/header-image/category.png"/>
+            <img class="category-image" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/category.png"/>
           </div>
           <a href="http://localhost:8080/AllProductsPage">전체 상품</a>
           <a href="#">베스트</a>

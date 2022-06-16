@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <img src="../assets/tattoo.png" class="rounded mx-auto d-block w-25" alt="상품이미지">
+        <img src='http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/tattoo.png' class="rounded mx-auto d-block w-25" alt="상품이미지">
         <div class="row">
             <h3 class="col-sm-offset-3 col-sm-6">회원가입</h3>
         </div>
@@ -105,7 +105,6 @@
 </template>
 
 <script>
-
 export default {
     data(){
         return{
@@ -114,7 +113,6 @@ export default {
     },
     
     methods: {
-
     checkRegexId(){
         let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
         if(!idRegexForm.test(this.$refs.id.value) && this.$refs.id.value !== ""){
@@ -125,7 +123,6 @@ export default {
             this.$refs.idCheck.innerHTML = " ";
         }
     },
-
     checkRegexPw(){
         let passwordRegexForm = /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*_+=-])(?=.*[0-9]).{6,16}$/;
         if(!passwordRegexForm.test(this.$refs.password.value) && this.$refs.password.value !== ""){
@@ -135,9 +132,7 @@ export default {
         else{
             this.$refs.pwCheck.innerHTML = " ";
         }
-
     },
-
     checkConfirmPw(){
         if (this.$refs.confirm_password.value !== this.$refs.password.value)
         {
@@ -148,7 +143,6 @@ export default {
             this.$refs.confirmPwCheck.innerHTML = " ";
         }
     },
-
     checkPhone(){
         let phoneRegexForm = /^(01[0|1|6|7|8|9]|02|03[1-3]|04[1-4]|05[1-5]|06[1-4])([0-9]{3,4})([0-9]{4})$/;
         if(!phoneRegexForm.test(this.$refs.phone.value) && this.$refs.phone.value !== ""){
@@ -159,50 +153,42 @@ export default {
             this.$refs.phoneCheck.innerHTML = " ";
         }
     },
-
     checkValidation(){
         if (this.$refs.firstname.value == ""){
             alert("성을 입력해주세요");
             this.$refs.firstname.focus();
             return false;
         }
-
         if (this.$refs.lastname.value == ""){
             alert("이름을 입력해주세요");
             this.$refs.lastname.focus();
             return false;
         }
-
         if (this.$refs.id.value == ""){
             alert("아이디를 입력해주세요");
             this.$refs.id.focus();
             return false;
         }
-
         if (this.$refs.password.value == ""){
             alert("비밀번호를 입력해주세요");
             this.$refs.password.focus();
             return false;
         }
-
         if (this.$refs.email_id.value == ""){
             alert("이메일을 입력해주세요");
             this.$refs.email_id.focus();
             return false;
         }
-
         if (this.$refs.email_address.value == ""){
             alert("이메일 주소를 입력해주세요");
             this.$refs.email_address.focus();
             return false;
         }
-
         if (this.$refs.postcode.value == "" && this.$refs.address.value == ""){
             alert("주소를 입력해주세요");
             this.$refs.ddress.focus();
             return false;
         }
-
         if (!this.$refs.male.checked && !this.$refs.female.checked){
             alert("성별을 체크해주세요");
             this.$refs.male.focus();
@@ -211,12 +197,9 @@ export default {
         this.sendData();
         alert("회원가입이 완료되었습니다!");
         window.location.href = "http://localhost:8080/LoginPage"
-
     },
-
     idCheck(){
         let idRegexForm = /^[0-9a-zA-Z]{6,16}$/;
-
         if (this.$refs.id.value == ""){
             alert("아이디 입력후에 체크해주세요");
         }
@@ -250,14 +233,11 @@ export default {
             this.$refs.id.focus();
         }
     },
-
     changeEmailAddress(){
         let selectedIndex = this.$refs.email_selected.options.selectedIndex;
         let selectedEmailAddress = this.$refs.email_selected.options[selectedIndex].value;
-
         this.$refs.email_address.value = selectedEmailAddress;
     },
-
     setMaxDay() {
         let box = this.$refs.month;
         let selectedMonth = box.options[box.selectedIndex].text;
@@ -277,19 +257,16 @@ export default {
                 break;
         }
     },
-
     searchAddress() {
         new window.daum.Postcode({
             oncomplete: function(data) {
                 var addr = ''; // 주소 변수
-
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                     addr = data.roadAddress;
                 } else { // 사용자가 지번 주소를 선택했을 경우(J)
                     addr = data.jibunAddress;
                 }
-
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('postcode').value = data.zonecode;
                 document.getElementById("address").value = addr;
@@ -298,10 +275,8 @@ export default {
             }
         }).open();
     },
-
     sendData(){
     let gender;
-
     if (this.$refs.male.checked){
         gender = this.$refs.male.value;
     }
@@ -325,11 +300,9 @@ export default {
         birth: this.$refs.year.value + this.$refs.month.value + this.$refs.day.value
     }),
     })
-
     .then((response) => response.json())
     .then((data) => console.log(data));
     },
-
     }
 }
 </script>
@@ -351,5 +324,4 @@ export default {
 span{
     color : red
 }
-
 </style>
