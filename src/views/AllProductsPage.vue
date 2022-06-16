@@ -38,7 +38,7 @@
             <img :src="product.image" class="card-img-top" alt="product.name">
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
-              <p class="card-text"> {{product.price}}원</p>  
+              <p class="card-text"> {{setComma(product.price)}}원</p>  
               <a href="#" class="btn btn-primary">구매하기</a>
             </div>
           </div>
@@ -71,37 +71,40 @@ export default {
       products:[
         { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
           name: "라이언과 춘식이의 전자시계", 
-          price: "49000",},
+          price: 49000},
         { image: require('@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg'), 
           name: "라이언 리틀 얼굴쿠션", 
-          price: "16000"},
+          price: 16000},
         { image: require('@/assets/best-seller/Ice-Mug-Apeach.jpg'), 
           name: "시원한아이스머그_어피치", 
-          price: "10000"},
+          price: 10000},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20200807170225137_8809721503959_AW_00.jpg', 
           name: "목쿠션_어피치", 
-          price: "12000"},
+          price: 12000},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20211209163903387_8809814920793_AW_03.jpg', 
           name: "자석마스크걸이_라이언&춘식이", 
-          price: "15000"},
+          price: 15000},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20220214140504221_8809814924562_AW_01.jpg', 
           name: "춘식이 피규어주차번호판", 
-          price: "16000"},
+          price: 16000},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20220525112943571_8809814925477_8809814925477_AW_00.jpg', 
           name: "머니건_라이언&춘식이", 
-          price: "19900"},
+          price: 19900},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20220509104011136_8809814926313_8809814926313_AW_00.jpg', 
           name: "핸디형 미니 선풍기_어피치", 
-          price: "22000"},
+          price: 22000},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20220516120300962_8809814924654_8809814924654_AW_00.jpg', 
           name: "10000mAh춘식이보조배터리", 
-          price: "49000"}
+          price: 49000}
       ],
       productList:[]
     }
   },
   
   methods: {
+    setComma(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
     changeCategory(character){
       this.productList = [];
 
