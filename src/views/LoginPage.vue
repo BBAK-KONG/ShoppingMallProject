@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src= 'http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/tattoo.png'
-            class="img-fluid" alt="Sample image">
+        <div class="col-6">
+            <img src="https://st.kakaocdn.net/commerce_ui/front-friendsshop/real/20220616/155659/assets/images/m960/ico_cart_empty.png"
+            class="img-fluid w-75" alt="Sample image">
         </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="col-4">
             <!-- id input -->
             <div class="form-outline mb-4">
                 <input type="text" id="userId" class="form-control form-control-lg"
@@ -84,7 +84,7 @@ export default {
 <style scoped>
 .container{
     margin-top: 100px;
-    background-color: #ecfbcc;
+    background-color: #f7e4b2;
 }
 
 #userId{

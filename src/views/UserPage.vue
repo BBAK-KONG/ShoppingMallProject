@@ -49,15 +49,19 @@
                   <tbody>
                     <tr>
                       <!-- 상품명 -->
-                      <td class="item">{{ product.name }}</td>
+                      <td class="item">상품명 : {{ product.name }}</td>
                     </tr>
                     <tr>
                       <!-- 상품개수 -->
-                      <td class="item">{{ product.quantity }}</td>
+                      <td class="item">개수 : {{ product.quantity }}</td>
                     </tr>
                     <tr>
                       <!-- 상품가격 -->
-                      <td class="item">{{ product.price * product.quantity }}</td>
+                      <td class="item">가격 : {{ product.price * product.quantity }}</td>
+                    </tr>
+                    <tr>
+                      <!-- 구매일자-->
+                      <td class="item">구매일자 : {{ new Date() }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -147,7 +151,9 @@ export default {
 }
 
 .item{
-  font-size: large;
+  text-align: left;
+  padding-top: 30px;
+  font-size: 28px;
 }
 
 </style>
