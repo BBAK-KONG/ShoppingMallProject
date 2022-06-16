@@ -13,7 +13,7 @@
           <img :src="product.image" class="card-img-top" alt="product.name">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{product.price}}원</p>  
+            <p class="card-text">{{setComma(product.price)}}원</p>  
             <a href="#" class="btn btn-primary">구매하기</a>
           </div>
         </div>
@@ -34,16 +34,21 @@ export default {
       products:[
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20220525112943571_8809814925477_8809814925477_AW_00.jpg', 
           name: "머니건_라이언&춘식이", 
-          price: "19,900",},
+          price: 19900},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20220509104011136_8809814926313_8809814926313_AW_00.jpg', 
           name: "핸디형 미니 선풍기_어피치", 
-          price: "22,000",},
+          price: 22000},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20220516120300962_8809814924654_8809814924654_AW_00.jpg', 
           name: "10000mAh춘식이보조배터리", 
-          price: "49,000",}
+          price: 49000}
       ]
     }
-  }
+  },
+  methods: {
+    setComma(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+  },
 }
 </script>
 >

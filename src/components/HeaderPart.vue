@@ -13,8 +13,10 @@
           </a>
           <input class="searchInput" type="text">
           <span class="user-menu">
-            <img class="cart-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/cart.png"/>
-            <img class="myPage-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/myPage.png"/>
+            <a href="http://localhost:8080/ShoppingCartPage">
+              <img class="cart-img" src = "@/assets/header-image/cart.png"/>
+            </a>
+            <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
           </span>
         </span>
 

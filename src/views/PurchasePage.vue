@@ -214,7 +214,7 @@ export default {
       if(this.subtotal < 30000){
         this.shipping = 3000;
       }
-      
+
       if(this.shipping == 0){
         return "무료";
       }
@@ -357,7 +357,8 @@ export default {
   .payment-button{
     width: 400px;
     height: 100px;
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: bold;
   }
 
   .payment-button-layout{
