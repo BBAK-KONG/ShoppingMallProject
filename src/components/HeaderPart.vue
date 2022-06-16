@@ -9,7 +9,7 @@
 
         <span calss="logo">
           <a href="http://localhost:8080/">
-            <img class="logo-img" src = "@/assets/header-image/logo.jpg"/>
+            <img class="logo-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/logo.jpg"/>
           </a>
           <input class="searchInput" type="text">
           <span class="user-menu">
@@ -22,7 +22,7 @@
 
         <div class="category">
           <div class="category-img-part">
-            <img class="category-image" src = "@/assets/header-image/category.png"/>
+            <img class="category-image" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/category.png"/>
           </div>
           <a href="http://localhost:8080/AllProductsPage">전체 상품</a>
           <a href="#">베스트</a>

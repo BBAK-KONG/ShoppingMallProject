@@ -31,13 +31,13 @@ export default {
   data() {
     return {
       products:[
-        { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
+        { image: 'http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Electronic-Clock-Ryan&Choonsik.jpg', 
           name: "라이언과 춘식이의 전자시계", 
-          price: 49000},
-        { image: require('@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg'), 
+          price: "49,000",},
+        { image: 'http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Face-Type-Mini-Cushion-Ryan.jpg',
           name: "라이언 리틀 얼굴쿠션", 
-          price: 16000},
-        { image: require('@/assets/best-seller/Ice-Mug-Apeach.jpg'), 
+          price: "16,000",},
+        { image: 'http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Ice-Mug-Apeach.jpg', 
           name: "시원한아이스머그_어피치", 
           price: 10000},
         { image: 'https://t1.kakaocdn.net/friends/prod/product/20200807170225137_8809721503959_AW_00.jpg', 
