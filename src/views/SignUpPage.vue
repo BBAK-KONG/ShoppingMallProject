@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <img src='http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/tattoo.png' class="rounded mx-auto d-block w-25" alt="상품이미지">
+        <img src="https://st.kakaocdn.net/commerce_ui/front-friendsshop/real/20220616/155659/assets/images/m960/ico_cart_empty.png" class="rounded mx-auto d-block w-25" alt="상품이미지">
         <div class="row">
             <h3 class="col-sm-offset-3 col-sm-6">회원가입</h3>
         </div>
@@ -273,7 +273,7 @@ export default {
     .then((response) => response.json())
     .then((data) => console.log(data));
     alert("회원가입이 완료되었습니다!");
-    window.location.href = "http://52.79.226.217:8080/LoginPage"
+    this.$router.push('/LoginPage')
     },
 
     idCheck(){
@@ -365,7 +365,7 @@ export default {
 
 <style scoped>
 .container{
-    background-color: #ecfbcc;
+    background-color: #f7e4b2;
 }
 
 .row{
@@ -373,7 +373,7 @@ export default {
 }
 
 .col-sm-6{
-    margin-left: 310px; 
+    margin-left: 330px; 
 }
 .form-control { 
     margin-top: 20px; 
