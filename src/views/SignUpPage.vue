@@ -39,7 +39,7 @@
                     <div class="col-4">
                         <input type="text" name="email_id" ref="email_id" class="form-control input-lg" placeholder="이메일"/>
                     </div>
-                    <div class="col">
+                    <div class="col" id="at">
                         <label>@</label>
                     </div>
                     <div class="col-4">
@@ -68,8 +68,8 @@
                 <input type="text" ref="address" id="address" class="form-control input-lg" placeholder="주소" disabled>
                 <input type="text" ref="detailAddress" id="detailAddress" class="form-control input-lg" placeholder="상세주소">
 
-                <label>생년월일</label>
-                <div class="row">
+                <label id="birthLabel">생년월일</label>
+                <div class="row" id="birthRow">
                     <div class="col-xs-4 col-md-4">
                         <select name="year" ref="year" class = "form-control input-lg">
                             <option v-for="yearValue in 100" :key="2022 - yearValue">{{ 2022 - yearValue }}년</option>
@@ -95,9 +95,7 @@
                         <input type="radio" name="gender" value="F" ref="female" />여
                     </label>
                 </div>
-                <br/><br/><br/>
-                <button class="btn btn-lg btn-primary btn-block" type="button" @click="sendData">회원가입</button>
-                <br/><br/><br/>
+                <button class="btn btn-lg btn-primary btn-block" id="signUpButton" type="button" @click="sendData">회원가입</button>
             </div>
         </div>
     </div>
@@ -369,6 +367,11 @@ export default {
 .container{
     background-color: #ecfbcc;
 }
+
+.row{
+    text-align: left;
+}
+
 .col-sm-6{
     margin-left: 310px; 
 }
@@ -378,13 +381,39 @@ export default {
 .radio-inline{
     padding-left: 10px;
 }
+
 span{
     color : red
 }
+
 #checkButton{
     margin-top: 20px;
 }
+
 #searchButton{
     margin-top: 20px;
+}
+
+#birthLabel{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#gender-pick{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#birthRow{
+    margin-top: -20px;
+}
+
+#at{
+    margin-top: 25px;
+}
+
+#signUpButton{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 </style>
