@@ -72,6 +72,9 @@ export default {
                 if(this.isLoggedin){    
                     window.location.href = "http://localhost:8080/"
                 }
+                else{
+                    alert("아이디 또는 비밀번호가 틀립니다.");
+                }
             });
         },
         }
