@@ -6,6 +6,7 @@ import LoginPage from '@/views/LoginPage';
 import SignUpPage from '@/views/SignUpPage';
 import PurchasePage from '@/views/PurchasePage';
 import ShoppingCartPage from '@/views/ShoppingCartPage';
+import UserPage from '@/views/UserPage';
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/ShoppingCartPage',
     name: 'ShoppingCartPage',
     component: ShoppingCartPage
+  },
+  {
+    path: '/UserPage',
+    name: 'UserPage',
+    component: UserPage
   },
 ];
 
