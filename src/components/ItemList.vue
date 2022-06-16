@@ -1,7 +1,7 @@
 <template>
   <!-- 주문 제품 목록 -->
-  <div class="cont">
-    <div class="cont-inner" v-for="(product, index) in products" :key="product" :index="index">
+  <div class="product-list">
+    <div class="product-list-inner" v-for="(product, index) in products" :key="product" :index="index">
       <div class="purchase-card" >
         <div class="row">
           <div class="col-4">
@@ -23,7 +23,7 @@
                     <tr>
                       <div class="row">
                         <!-- 구매 수량 선택 -->
-                        <div class="col-md-6 quantity-selection">
+                        <div class="col-xs-6 quantity-selection">
                           <select class="form-select" aria-label="quantity selection" 
                           @change="setQuantity(product.name, $event)" style="width:100px; font-size:20px;">
                             <option value="" selected disabled hidden>{{ product.quantity }}</option>
@@ -31,7 +31,7 @@
                           </select>
                         </div>
                         <!-- 상품 총 가격(상품가격*구매량) -->
-                        <div class="col-md-6 subtotal">
+                        <div class="col-xs-6 subtotal">
                           <td class="price">{{this.setComma(product.price * product.quantity)}}원</td>
                         </div>
                       </div>
@@ -70,10 +70,10 @@
           </tr>
           <tr>
             <!-- 회원이 결제할 총 금액 -->
-            <th class="item" scope="row">
+            <th class="item" scope="row" style="font-size: 30px;">
               총 결제금액
             </th>
-            <td class="price">
+            <td class="price" style="font-size: 30px">
               <span><strong>{{getTotalPrice()}}</strong></span></td>
           </tr>
         </tbody>
@@ -125,6 +125,8 @@ export default {
 
     getTotalPrice(){
       this.totalPrice = this.subtotal + this.shipping;
+      this.$emit('getTotalPrice', this.totalPrice);
+
       return this.setComma(this.totalPrice) + "원";
     },
 
@@ -146,7 +148,7 @@ export default {
     float: left;
   }
 
-  .cont-inner {
+  .product-list-inner {
     width: 1200px;
     height: 200px;
     border-bottom: 3px solid;
@@ -156,7 +158,7 @@ export default {
     margin: 0 auto;
   } 
 
-  .cont img{
+  .product-list img{
     float: left;
     height: 200px;
     border-bottom: 3px solid;

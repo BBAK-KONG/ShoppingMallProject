@@ -156,7 +156,7 @@ export default {
 }
 </script> 
 
-<style>
+<style scoped>
   #category {
   width: 100%;
   height: 600px;
