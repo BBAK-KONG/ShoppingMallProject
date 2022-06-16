@@ -27,7 +27,7 @@
                 </label>
                 </div>
                 <a href="#!" id="find-pw">비밀번호 찾기</a>
-                <a href="http://52.79.226.217:8080/SignUpPage" id="sign-up">회원가입</a>
+                <router-link to="/SignUpPage" id="sign-up">회원가입</router-link>
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
@@ -70,7 +70,7 @@ export default {
             .then(data => {
                 this.isLoggedin = data["status"];
                 if(this.isLoggedin){    
-                    window.location.href = "http://52.79.226.217:8080/"
+                    this.$router.push('/')
                 }
                 else{
                     alert("아이디 또는 비밀번호가 틀립니다.");

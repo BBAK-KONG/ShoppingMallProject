@@ -123,7 +123,7 @@ export default {
     },
 
     goToPurchasePage(){
-      window.location.href = "http://52.79.226.217:8080/PurchasePage";
+      this.$router.push('/PurchasePage')
     }
   },
 }
@@ -131,28 +131,23 @@ export default {
 
 <style scoped>
 
-  #menu {
-    width: 100%;
-    height: 50px;
-  } 
+#menu {
+  width: 100%;
+  height: 50px;
+} 
 
-  .menu-inner {
-    width: 1200px;
-    height: 50px;
-    margin: 0 auto;
-    border-bottom: 3px solid;
-    border-color: #d2d2d2;
-    margin-top: 70px;
-    font-size: 30px;
-  }
-  
-  .buy-btn {
-    width: 400px;
-    height: 100px;
-    border: 0;
-    background-color: #fb2e45;
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-  }
+.menu-inner {
+  width: 1200px;
+  height: 50px;
+  margin: 0 auto;
+  border-bottom: 3px solid;
+  border-color: #d2d2d2;
+  margin-top: 70px;
+  font-size: 30px;
+}
+
+.item{
+  font-size: large;
+}
+
 </style>
