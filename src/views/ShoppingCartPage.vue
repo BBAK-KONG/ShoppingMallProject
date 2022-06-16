@@ -7,7 +7,9 @@
   </div>
   <!-- 장바구니에 담은 상품 정보 -->
   <ItemList :products="products" 
-  @getProductNameToBeDeleted="getProductNameToBeDeleted" @setQuantity="setQuantity"/>
+  @getProductNameToBeDeleted="getProductNameToBeDeleted" 
+  @setQuantity="setQuantity"
+  @getTotalPrice="getTotalPrice"/>
   <!-- 상품 삭제버튼 클릭시 삭제 여부를 한번 더 물음 -->
   <div class="modal fade" id="undeletableGuidanceModal" tabindex="-1" 
   aria-labelledby="modalTitle" aria-hidden="true">
@@ -26,6 +28,9 @@
       </div>
     </div>
   </div>
+
+  <button type="button" class="buy-btn" @click="goToPurchasePage">{{setComma(this.totalPrice)}}원 주문하기</button>
+
 </template>
 
 <script>
@@ -46,15 +51,24 @@ export default {
           quantity: 1
         }
       ],
-      productNameToBeDeleted: ""
+      productNameToBeDeleted: "",
+      totalPrice: 0
     }
   },
   components: {
     ItemList
   },
   methods: {
+    setComma(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
     getProductNameToBeDeleted(productName){
       this.productNameToBeDeleted = productName;
+    },
+
+    getTotalPrice(totalPrice){
+      this.totalPrice = totalPrice;
     },
 
     deleteProduct(productName){
@@ -72,6 +86,10 @@ export default {
           this.products[index].quantity = quantity;
         }
       }
+    },
+
+    goToPurchasePage(){
+      window.location.href = "http://localhost:8080/PurchasePage";
     }
   },
 }
@@ -94,4 +112,13 @@ export default {
     font-size: 30px;
   }
   
+  .buy-btn {
+    width: 400px;
+    height: 100px;
+    border: 0;
+    background-color: #fb2e45;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+  }
 </style>
