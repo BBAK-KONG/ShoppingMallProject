@@ -273,7 +273,7 @@ export default {
     .then((response) => response.json())
     .then((data) => console.log(data));
     alert("회원가입이 완료되었습니다!");
-    window.location.href = "http://localhost:8080/LoginPage"
+    window.location.href = "http://52.79.226.217:8080/LoginPage"
     },
 
     idCheck(){

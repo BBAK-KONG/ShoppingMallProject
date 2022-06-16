@@ -89,7 +89,7 @@ export default {
     },
 
     goToPurchasePage(){
-      window.location.href = "http://localhost:8080/PurchasePage";
+      window.location.href = "http://52.79.226.217:8080/PurchasePage";
     }
   },
 }
