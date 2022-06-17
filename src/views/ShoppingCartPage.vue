@@ -89,7 +89,7 @@ export default {
     },
 
     goToPurchasePage(){
-      window.location.href = "http://localhost:8080/PurchasePage";
+      this.$router.push('/PurchasePage')
     }
   },
 }

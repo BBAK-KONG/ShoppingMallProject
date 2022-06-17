@@ -3,20 +3,22 @@
     <div id="header">
       <div class="header-inner">
         <div class="menu" align="right">
-          <a href="http://localhost:8080/LoginPage">로그인</a>
-          <a href="http://localhost:8080/SignUpPage">회원가입</a>
+          <router-link to="/LoginPage">로그인</router-link>
+          <router-link to="/SignUpPage">회원가입</router-link>
         </div> 
 
         <span calss="logo">
-          <a href="http://localhost:8080/">
+          <router-link to="/">
             <img class="logo-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/logo.jpg"/>
-          </a>
+          </router-link>
           <input class="searchInput" type="text">
           <span class="user-menu">
-            <a href="http://localhost:8080/ShoppingCartPage">
+            <router-link to="/ShoppingCartPage">
               <img class="cart-img" src = "@/assets/header-image/cart.png"/>
-            </a>
-            <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
+            </router-link>
+            <router-link to="/UserPage">
+              <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
+            </router-link>
           </span>
         </span>
 
@@ -24,7 +26,7 @@
           <div class="category-img-part">
             <img class="category-image" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/category.png"/>
           </div>
-          <a href="http://localhost:8080/AllProductsPage">전체 상품</a>
+          <router-link to="/AllProductsPage">전체 상품</router-link>
           <a href="#">베스트</a>
           <a href="#">신상</a>
         </div>
