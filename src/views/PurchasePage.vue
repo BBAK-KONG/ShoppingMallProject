@@ -6,99 +6,40 @@
     </div>
   </div>
   <!-- 주문 제품 목록 -->
-  <div class="container" v-for="(product, index) in products" :key="product" :index="index">
-    <div class="purchase-card" >
-      <div class="row">
-        <div class="col-4">
-          <img :src="product.image" class="img-fluid rounded-start" alt="product.name">
-        </div>
-        <div class="col-8" style="float: left">
-          <div class="card-body">
-            <p class="card-text">
-              <table class="table product-table">
-                <tbody>
-                  <tr>
-                    <!-- 상품명 -->
-                    <td class="item">{{ product.name }}</td>
-                    <button type="button" class="btn-close" aria-label="Close" style="float: right" 
-                    @click="deleteProduct(product.name)" data-bs-toggle="modal" data-bs-target="#undeletableGuidanceModal">
-                    </button>
-                  </tr>
-                  <tr>
-                    <div class="row">
-                      <!-- 구매 수량 선택 -->
-                      <div class="col-6 quantity-selection">
-                        <select class="form-select" aria-label="quantity selection" 
-                        @change="setQuantity(product.name, $event)" style="width:100px; font-size:20px;">
-                          <option value="" selected disabled hidden>{{ product.quantity }}</option>
-                          <option v-for="quantity in maxQuantity" :key="quantity" :value=quantity>{{quantity}}</option>
-                        </select>
-                      </div>
-                      <!-- 상품 총 가격(상품가격*구매량) -->
-                      <div class="col-6 subtotal">
-                        <td class="price">{{this.setComma(product.price * product.quantity)}}원</td>
-                      </div>
-                    </div>
-                  </tr>
-                </tbody>
-              </table>
-            </p>
+  <div class="product-list">
+    <!-- 제품 목록 맨 윗줄 표시 -->
+    <div class="delimiter-line"></div>
+
+    <div class="product-list-inner" v-for="(product, index) in products" :key="product" :index="index">
+      <div class="purchase-card" >
+        <div class="row">
+          <div class="col-4">
+            <img :src="product.image" class="img-fluid rounded-start" alt="product.name">
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- 주문 제품 가격 정보 -->
-  <div class="price-information">
-    <div class="price-information-inner">
-      <table class="table">
-        <tbody>
-          <!-- 총 상품 금액 -->
-          <tr>
-            <th class="item" scope="row">
-              상품가
-            </th>
-            <td class="price">
-              <span>{{getSubtotal()}}</span>
-            </td>
-          </tr>
-          <!-- 총 상품 금액에 따른 배송비 -->
-          <tr>
-            <th class="item" scope="row">
-              배송비
-            </th>
-            <td class="price">
-              <span>{{getShipping()}}</span>
-            </td>
-          </tr>
-          <tr>
-            <!-- 회원이 결제할 총 금액 -->
-            <th class="item" scope="row">
-              총 결제금액
-            </th>
-            <td class="price">
-              <span><strong>{{getTotalPrice()}}</strong></span></td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <!-- 현재 구매상품이 하나만 있는데 삭제하려고 할 경우 모달창을 띄움(구매상품이 최소 1개가 있어야 하기 때문) -->
-      <div class="modal fade" id="undeletableGuidanceModal" tabindex="-1" 
-      aria-labelledby="modalTitle" aria-hidden="true"
-      v-if="this.products.length == 1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <!-- 모달창 닫기 버튼 -->
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <!-- 모달창 안내 문구 -->
-            <div class="modal-body">
-              <h5>모든 상품을 제거하실 수 없습니다.<br><br>1개 이상의 상품을 선택해주세요.</h5>
-            </div>
-            <!-- 모달창 닫기 버튼 -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="col-8" style="float: left">
+            <div class="card-body">
+              <p class="card-text">
+                <table class="table product-table">
+                  <tbody>
+                    <tr>
+                      <!-- 상품명 -->
+                      <td class="item">{{ product.name }}</td>
+                    </tr>
+                    <tr>
+                      <div class="row">
+                        <!-- 구매 수량 선택 -->
+                        <div class="col-6">
+                          <td class="quantity">{{ product.quantity }}개</td>
+                        </div>
+                        <!-- 상품 총 가격(상품가격*구매량) -->
+                        <div class="col-6 subtotal">
+                          <td class="price">{{this.setComma(product.price * product.quantity)}}원</td>
+                        </div>
+                      </div>
+                    </tr>
+                  </tbody>
+                </table>
+              </p>
             </div>
           </div>
         </div>
@@ -113,6 +54,61 @@
     </div>
   </div>
 
+  <div class="shipping-information">
+    <div class="shipping-information-inner">
+      <!-- 배송지 정보 맨 윗줄 구분선 -->
+      <div class="delimiter-line"></div>
+      <!-- 배송지 정보 -->
+      <div class="row">
+        <!-- 수령인 -->
+        <div class="shipping-form">
+          <span class="col-1">
+            <span class="form-item">수령인</span>
+          </span>
+          <span class="col-11">
+            <input type="text" name="lastname" id="lastname" class="form-control form-input input-lg" placeholder="이름"/>
+          </span>
+        </div>
+        <!-- 핸드폰번호 -->
+        <div class="shipping-form">
+          <span class="col-1">
+            <span class="form-item">휴대폰</span>
+          </span>
+          <span class="col-11">
+            <input type="tel" name="phone" ref="phone" @change="checkPhone" 
+            class="form-control form-input input-lg"
+            placeholder="휴대폰 번호 (-없이 숫자만 입력)"/>
+          </span>
+        </div>
+        <!-- 주소찾기 -->
+        <div class="address-form">
+          <span class="col-1">
+            <span class="form-item">주소찾기</span>
+          </span>
+          <span class="col-11">
+            <button id="searchButton" class="btn btn-block form-input btn-primary" 
+            type="button" @click="searchAddress" style="margin:10px 0px 0px 10px; width:200px;">우편번호 찾기</button>
+            <input type="text" ref="postcode" id="postcode" name="postcode" value="" 
+            class="form-control form-input" placeholder="우편번호" disabled style="margin-top:10px; width:590px;">
+          </span>
+        </div>
+        <div class="address-form">
+          <span class="col-12">
+            <input type="text" ref="address" id="address" class="form-control form-input" placeholder="주소" disabled>
+          </span>
+        </div>
+        <div class="address-form">
+          <span class="col-12">
+            <input type="text" ref="detailAddress" id="detailAddress" class="form-control form-input" 
+            placeholder="상세주소" style="margin-bottom:10px;">
+          </span>
+        </div>
+        <!-- 배송지 정보 맨 윗줄 구분선 -->
+        <div class="delimiter-line"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- 결제 정보 -->
   <div class="menu">
     <div class="menu-inner">
@@ -121,6 +117,9 @@
   </div>
   <div class="payment-information">
     <div class="payment-information-inner">
+      <!-- 주문 상품 가격정보 맨 윗줄 구분선 -->
+      <div class="delimiter-line" style="margin-bottom:10px;"></div>
+      <!-- 주문 상품 가격 정보 -->
       <table class="table">
         <tbody>
           <!-- 총 상품 금액 -->
@@ -161,12 +160,35 @@
           </tr>
         </tbody>
       </table>
+      <!-- 주문 상품 가격정보 맨 아랫줄 구분선 -->
+      <div class="delimiter-line" style="margin-top:10px;"></div>
     </div>
   </div>
 
   <div class="payment-button-layout">
     <div class="payment-button-inner">
-      <button type="button" class="payment-button btn-dark">결제하기</button>
+      <button type="button" class="payment-button btn-dark" 
+      data-bs-toggle="modal" data-bs-target="#GuidanceModal">
+        결제하기
+      </button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="GuidanceModal" tabindex="-1" 
+  aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- 모달창 안내 문구 -->
+        <div class="modal-body">
+          <h5 style="margin: 50px 0px 50px 0px">
+            {{getErrorMessage()}}
+          </h5>
+        </div>
+        <!-- 모달창 닫기 버튼 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -191,7 +213,8 @@ export default {
       shipping: 0,
       totalPrice: 0,
       maxQuantity: 300,
-      point: 3000
+      point: 3000,
+      errorMessage: ""
     }
   },
   methods:{
@@ -245,6 +268,21 @@ export default {
           this.products[index].quantity = event.target.value;
         }
       }
+    },
+
+    checkPhone(){
+      let phoneRegexForm = /^(01[0|1|6|7|8|9]|02|03[1-3]|04[1-4]|05[1-5]|06[1-4])([0-9]{3,4})([0-9]{4})$/;
+      if(!phoneRegexForm.test(this.$refs.phone.value) && this.$refs.phone.value !== ""){
+          this.$refs.phoneCheck.innerHTML = "올바른 번호를 입력해주세요";
+          this.$refs.phone.focus();
+          return false;
+      }
+      this.$refs.phoneCheck.innerHTML = " ";
+      return true;
+    },
+
+    getErrorMessage(){
+      return "휴대폰 번호를 입력해주세요";
     }
   }
 }
@@ -261,25 +299,31 @@ export default {
     width: 1200px;
     height: 50px;
     margin: 0 auto;
-    border-bottom: 3px solid;
-    border-color: #d2d2d2;
     margin-top: 100px;
+  }
+
+  .delimiter-line{
+    width: 1200px;
+    border-bottom: 3px solid; 
+    border-color: #d2d2d2;
+    margin: 0 auto;
   }
 
   h2{
     float: left;
   }
 
-  .container {
+  .product-list-inner {
     width: 1200px;
     height: 200px;
     border-bottom: 3px solid;
     border-color: #f0f0f0;
     padding-right:0px;
     padding-bottom: 0px;
+    margin: 0 auto;
   } 
 
-  .container img{
+  .product-list img{
     float: left;
     height: 200px;
     border-bottom: 3px solid;
@@ -327,12 +371,53 @@ export default {
     margin-bottom: 20px;
   }
 
-  .quantity-selection{
+  .quantity{
     float: left;
+    font-size: 25px;
   }
 
   .subtotal{
     float: right;
+  }
+
+  .shipping-information{
+    width: 100%;
+    height: 400px;
+  }
+
+  .shipping-information-inner{
+    width: 1200px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  .shipping-form{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0px 20px 0px;
+    border-bottom: 3px solid;
+    border-color: #f0f0f0;
+  }
+
+  .address-form{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 5px 0px 5px 0px;
+  }
+
+
+  .form-item{
+    width: 150px; 
+    font-size:25px;
+    float:left;
+    text-align: left;
+    padding-top: 10px;
+  }
+
+  .form-input{
+    width: 800px;
+    font-size:25px;
+    float:right;
   }
 
   .payment-information{
@@ -345,8 +430,6 @@ export default {
     width: 1200px;
     height: 270px;
     margin: 0 auto;
-    border-bottom: 3px solid;
-    border-color: #d2d2d2;
   }
 
   .point-input{
