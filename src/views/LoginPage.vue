@@ -8,13 +8,13 @@
         <div class="col-4">
             <!-- id input -->
             <div class="form-outline mb-4">
-                <input type="text" id="userId" class="form-control form-control-lg"
+                <input type="text" ref="userId" class="form-control form-control-lg"
                 placeholder="아이디를 입력해주세요" />
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-3">
-                <input type="password" id="userPw" class="form-control form-control-lg"
+                <input type="password" ref="userPw" class="form-control form-control-lg"
                 placeholder="비밀번호를 입력해주세요" />
             </div>
 
@@ -43,23 +43,21 @@ export default {
 
     data(){
         return{
-            isLoggedin: false
+            isLoggedin: false,
+            userId: ""
         }
     },
 
     methods: {
         tryLogin(){
-            let id = document.getElementById("userId");
-            let password = document.getElementById("userPw");
-            
             fetch("http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/users/login", {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    user_id: id.value,
-                    password: password.value,
+                    user_id: this.$refs.userId.value,
+                    password: this.$refs.userPw.value,
                 }),
                 })
             
@@ -70,7 +68,8 @@ export default {
             .then(data => {
                 this.isLoggedin = data["status"];
                 if(this.isLoggedin){    
-                    this.$router.push('/')
+                    this.userId = this.$refs.userId.value;
+                    this.$router.push('/');                                     
                 }
                 else{
                     alert("아이디 또는 비밀번호가 틀립니다.");
