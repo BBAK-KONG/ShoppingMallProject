@@ -39,36 +39,34 @@ export default {
 <style>
 #banner {
   width: 100%;
-  height: 600px;
-  background-color: #ecfbcc;
+  height: 500px;
 } 
 
 .banner-inner {
-  width: 1200px;
-  height: 600px;
+  width: 900px;
+  height: 500px;
   margin: 0 auto;
 }
 
 #best-seller {
   margin-top: 150px;
   width: 100%;
-  height: 1600px;
+  height: 1200px;
 } 
 
 .best-seller-inner {
-  width: 1200px;
-  height: 1600px;
+  width: 900px;
+  height: 1200px;
   margin: 0 auto;
 }
 
 #new-product {
-  margin-top: 150px;
   width: 100%;
   height: 800px;
 } 
 
 .new-product-inner {
-  width: 1200px;
+  width: 900px;
   height: 800px;
   margin: 0 auto;
 }

@@ -29,7 +29,7 @@
 <style>
   .carousel-inner{
     width: auto;
-    height:600px;
+    height:500px;
   }
   .carousel-item{
     width: auto;
