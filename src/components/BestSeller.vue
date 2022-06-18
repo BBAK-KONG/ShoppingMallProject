@@ -90,6 +90,7 @@ export default {
 
   .card-title {
     font-size: 16px;
+    height: 40px;
   }
 
   .card-text{

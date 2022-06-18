@@ -1,40 +1,38 @@
 <template>
   <div id="category">
-      <div class="category-inner">
-        <h3>전체 상품</h3>
-        <div class="container" style="margin-top:70px">
-          <div class="row gx-5">
-            <div class="col-sm" v-for="category in category" :key="category">
-              <div class="character-card" @click="changeCategory(category.name)">
-                <img :src="category.image" class="card-img-top" alt="category.name">
-                <div class="card-footer bg-white border-top-0">
-                  <h5 class="card-title">{{ category.name }}</h5>
-                </div>
+    <div class="category-inner">
+      <h3>전체 상품</h3>
+      <div style="margin-top:70px">
+        <div class="row gx-5">
+          <div class="col-sm" v-for="category in category" :key="category">
+            <div class="character-card" @click="changeCategory(category.name)">
+              <img :src="category.image" class="card-img-top" alt="category.name">
+              <div class="card-footer bg-white border-top-0">
+                <h5 class="card-title">{{ category.name }}</h5>
               </div>
             </div>
           </div>
         </div>
-
-        <select class="form-select" aria-label="quantity selection" 
-        style="width:170px; font-size:20px;" @change="sortProductList($event)">
-          <option value="신상품순">신상품순</option>
-          <option value="인기순">인기순</option>
-          <option value="높은 가격순">높은 가격순</option>
-          <option value="낮은 가격순">낮은 가격순</option>
-        </select>
       </div>
+
+      <select class="form-select" aria-label="quantity selection" @change="sortProductList($event)">
+        <option value="신상품순">신상품순</option>
+        <option value="인기순">인기순</option>
+        <option value="높은 가격순">높은 가격순</option>
+        <option value="낮은 가격순">낮은 가격순</option>
+      </select>
+    </div>
   </div>
 
   <div id="product-list">
-    <div class="container">
-      <div class="row g-5">
+    <div class="product-list-inner">
+      <div class="row g-4">
         <div class="col-4" v-for="(product, index) in productList" :key="product" :index="index" >
           <div class="card">
             <img :src="product.image" class="card-img-top" alt="product.name">
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
-              <p class="card-text"> {{setComma(product.price)}}원</p>  
-              <a href="#" class="btn btn-primary">구매하기</a>
+              <p class="card-text"> {{setComma(product.price)}}원</p>
             </div>
           </div>
         </div>
@@ -96,9 +94,6 @@ export default {
           price: 39000},
         { image: "https://t1.kakaocdn.net/friends/prod/product/20220519134648978_8809814924395_AW_00.jpg", 
           name: "클래식 북 무드등 그린_라이언&춘식이", 
-          price: 39000},
-        { image: "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/banner1.jpg", 
-          name: "클래식 북 무드등 그린_라이언&춘식이", 
           price: 39000}
       ],
       productList:[]
@@ -109,6 +104,17 @@ export default {
     setComma(value) {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
+
+    getProductList(){
+      let productList;
+
+      for(let index=0; index<this.products.length; index++){
+        productList.push(this.products[index]);
+      }
+
+      return productList;
+    },
+
     changeCategory(character){
       this.productList = [];
 
@@ -176,5 +182,16 @@ export default {
   .form-select{
     margin-top: 60px;
     float: right;
+    width:140px; 
+    font-size:16px;
+  }
+
+  #product-list{
+    width: 100%;
+  }
+
+  .product-list-inner{
+    width: 900px;
+    margin: 0 auto;
   }
 </style>
