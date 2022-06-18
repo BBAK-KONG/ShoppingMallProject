@@ -23,9 +23,9 @@
                       </button>
                     </tr>
                     <tr>
-                      <!-- 상품 총 가격(상품가격*구매량) -->
+                      <!-- 상품 가격 -->
                       <div class="subtotal">
-                        <td class="price">{{this.setComma(product.price * product.quantity)}}원</td>
+                        <td class="price">{{this.setComma(product.price)}}원</td>
                       </div>
                     </tr>
                     <tr>
@@ -75,7 +75,7 @@
               배송비
             </th>
             <td class="price">
-              <span>{{getShipping()}}</span>
+              <span>{{setShipping()}}{{this.shippingStatus}}</span>
             </td>
           </tr>
           <tr>
@@ -103,6 +103,7 @@ export default {
     return {
       subtotal: 0,
       shipping: 0,
+      shippingStatus: "",
       totalPrice: 0,
       maxQuantity: 300,
       point: 3000
@@ -135,6 +136,16 @@ export default {
       return this.setComma(this.shipping) + "원";
     },
 
+    setShipping(){
+      if(this.subtotal < 30000){
+        this.shipping = 3000;
+      }
+      else{
+        this.shipping = 0;
+      }
+      this.shippingStatus = this.getShipping();
+    },
+
     getTotalPrice(){
       this.totalPrice = this.subtotal + this.shipping;
       this.$emit('getTotalPrice', this.totalPrice);
@@ -154,7 +165,6 @@ export default {
 
     minusQuantity(productName){
       this.$emit('minusQuantity', productName);
-      
     },
 
     plusQuantity(productName){
@@ -219,6 +229,7 @@ export default {
   .item{
     float: left;
     font-size: 16px;
+    font-weight: normal;
     border-bottom: none;
   }
 
@@ -240,7 +251,8 @@ export default {
   .quantity{
     margin: 0px 0px 0px 25px; 
     width:70px; 
-    font-size:16px;            
+    font-size:16px;   
+    font-weight: normal;         
     border: 3px solid;
     border-color: #f0f0f0;
   }
