@@ -3,8 +3,15 @@
     <div id="header">
       <div class="header-inner">
         <div class="menu" align="right">
-          <router-link to="/LoginPage">로그인</router-link>
-          <router-link to="/SignUpPage">회원가입</router-link>
+          <div v-if="userId == null">
+              <router-link to="/LoginPage">로그인</router-link>
+              <router-link to="/SignUpPage">회원가입</router-link>
+          </div>
+          <div v-else>
+              <span>{{userId}}님 환영합니다.</span>
+              <router-link to="/" @click="logout">로그아웃</router-link>
+              
+          </div>
         </div> 
 
         <span calss="logo">
@@ -14,10 +21,10 @@
           <input class="searchInput" type="text">
           <span class="user-menu">
             <router-link to="/ShoppingCartPage">
-              <img class="cart-img" src = "@/assets/header-image/cart.png"/>
+              <img class="cart-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/cart.png"/>
             </router-link>
             <router-link to="/UserPage">
-              <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
+              <img class="myPage-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/myPage.png"/>
             </router-link>
           </span>
         </span>
@@ -35,6 +42,29 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+    data(){
+        return{
+            userId: this.$cookies.get('user_id')
+      }
+    },
+
+    methods: {
+    
+    refresh(){
+      this.$router.go()
+    },
+
+    logout(){
+      this.$cookies.remove('user_id');
+      this.$router.go();
+    }
+  }
+}
+</script>
+
 
 <style>
 
@@ -103,7 +133,7 @@
   width: 25%;
   display: flex;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   text-decoration-line: none;
   color: black;
 }

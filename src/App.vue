@@ -5,7 +5,7 @@
       <router-view></router-view>
       <button class="top-btn" >
         <a href="#">
-          <img src="@/assets/header-image/topButton.png" width="50">
+          <img src="http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/topButton.png" width="50">
         </a>
       </button>
       <FooterPart/>

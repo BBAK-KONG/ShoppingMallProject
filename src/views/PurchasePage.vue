@@ -2,7 +2,7 @@
   <!-- 주문 제품 정보 -->
   <div class="menu">
     <div class="menu-inner">
-      <h2>01. 주문제품</h2>
+      <h4>01. 주문상품</h4>
     </div>
   </div>
   <!-- 주문 제품 목록 -->
@@ -21,12 +21,12 @@
               <p class="card-text">
                 <table class="table product-table">
                   <tbody>
-                    <tr>
+                    <tr style="padding-top: 0px">
                       <!-- 상품명 -->
                       <td class="item">{{ product.name }}</td>
                     </tr>
                     <tr>
-                      <div class="row">
+                      <div class="row" style="margin-top: 35px;">
                         <!-- 구매 수량 선택 -->
                         <div class="col-6">
                           <td class="quantity">{{ product.quantity }}개</td>
@@ -50,7 +50,7 @@
   <!-- 배송지 정보 -->
   <div class="menu">
     <div class="menu-inner">
-      <h2>02. 배송지 정보</h2>
+      <h4>02. 배송지 정보</h4>
     </div>
   </div>
 
@@ -87,9 +87,9 @@
           </span>
           <span class="col-11">
             <button id="searchButton" class="btn btn-block form-input btn-primary" 
-            type="button" @click="searchAddress" style="margin:10px 0px 0px 10px; width:200px;">우편번호 찾기</button>
+            type="button" @click="searchAddress" style="margin:10px 0px 0px 10px; width:150px;">우편번호 찾기</button>
             <input type="text" ref="postcode" id="postcode" name="postcode" value="" 
-            class="form-control form-input" placeholder="우편번호" disabled style="margin-top:10px; width:590px;">
+            class="form-control form-input" placeholder="우편번호" disabled style="margin-top:10px; width:440px;">
           </span>
         </div>
         <div class="address-form">
@@ -112,7 +112,7 @@
   <!-- 결제 정보 -->
   <div class="menu">
     <div class="menu-inner">
-      <h2>03. 결제하기</h2>
+      <h4>03. 결제하기</h4>
     </div>
   </div>
   <div class="payment-information">
@@ -146,16 +146,16 @@
               포인트 ({{this.point}}p)
             </th>
             <td class="price">
-              <input class="form-control-lg point-input" type="text" placeholder=0 aria-label="point input">
+              <input class="form-control point-input" type="text" placeholder=0 aria-label="point input">
             </td>
           </tr>
           <!-- 총 결제금액 -->
           <tr>
             <th class="item" scope="row">
-              <h2><strong>최종 결제금액</strong></h2>
+              <span style="font-size:22px;"><strong>최종 결제금액</strong></span>
             </th>
             <td class="price" style="color: red;">
-              <h2><strong>{{getTotalPrice()}}</strong></h2>
+              <span style="font-size:22px;"><strong>{{getTotalPrice()}}</strong></span>
             </td>
           </tr>
         </tbody>
@@ -296,26 +296,26 @@ export default {
   } 
 
   .menu-inner {
-    width: 1200px;
+    width: 900px;
     height: 50px;
     margin: 0 auto;
     margin-top: 100px;
   }
 
   .delimiter-line{
-    width: 1200px;
+    width: 900px;
     border-bottom: 3px solid; 
     border-color: #d2d2d2;
     margin: 0 auto;
   }
 
-  h2{
+  h4{
     float: left;
   }
 
   .product-list-inner {
-    width: 1200px;
-    height: 200px;
+    width: 900px;
+    height: 180px;
     border-bottom: 3px solid;
     border-color: #f0f0f0;
     padding-right:0px;
@@ -325,7 +325,7 @@ export default {
 
   .product-list img{
     float: left;
-    height: 200px;
+    height: 180px;
     border-bottom: 3px solid;
     border-color: #f0f0f0;
   }
@@ -347,7 +347,7 @@ export default {
   }
 
   .price-information-inner {
-    width: 1200px;
+    width: 900px;
     height: 170px;
     margin: 0 auto;
     border-bottom: 3px solid;
@@ -356,13 +356,14 @@ export default {
 
   .item{
     float: left;
-    font-size: 25px;
+    font-size: 16px;
     border-bottom: none;
+    font-weight: normal;
   }
 
   .price{
     float: right;
-    font-size: 25px;
+    font-size: 16px;
     border-bottom: none;
   }
 
@@ -373,7 +374,8 @@ export default {
 
   .quantity{
     float: left;
-    font-size: 25px;
+    font-size: 16px;
+    font-weight: normal;
   }
 
   .subtotal{
@@ -386,13 +388,13 @@ export default {
   }
 
   .shipping-information-inner{
-    width: 1200px;
+    width: 900px;
     height: 400px;
     margin: 0 auto;
   }
 
   .shipping-form{
-    width: 1200px;
+    width: 900px;
     margin: 0 auto;
     padding: 20px 0px 20px 0px;
     border-bottom: 3px solid;
@@ -400,23 +402,23 @@ export default {
   }
 
   .address-form{
-    width: 1200px;
+    width: 900px;
     margin: 0 auto;
     padding: 5px 0px 5px 0px;
   }
 
 
   .form-item{
-    width: 150px; 
-    font-size:25px;
+    width: 70px; 
+    font-size: 16px;
     float:left;
     text-align: left;
     padding-top: 10px;
   }
 
   .form-input{
-    width: 800px;
-    font-size:25px;
+    width: 600px;
+    font-size: 16px;
     float:right;
   }
 
@@ -427,7 +429,7 @@ export default {
   }
 
   .payment-information-inner {
-    width: 1200px;
+    width: 900px;
     height: 270px;
     margin: 0 auto;
   }
@@ -440,7 +442,7 @@ export default {
   .payment-button{
     width: 400px;
     height: 100px;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: bold;
   }
 
@@ -451,7 +453,7 @@ export default {
   }
 
   .payment-button-inner {
-    width: 1200px;
+    width: 900px;
     height: 250px;
     margin: 0 auto;
   }

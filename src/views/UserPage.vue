@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                       <!-- 상품가격 -->
-                      <td class="item">가격 : {{ product.price * product.quantity }}</td>
+                      <td class="item">가격 : {{ setComma(product.price * product.quantity) }}</td>
                     </tr>
                     <tr>
                       <!-- 구매일자-->
@@ -81,12 +81,12 @@ export default {
   data() {
     return {
       products:[
-        { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
+        { image: "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Electronic-Clock-Ryan&Choonsik.jpg", 
           name: "라이언과 춘식이의 전자시계", 
           price: 49000,
           quantity: 2
         },
-        { image: require('@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg'), 
+        { image: "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Face-Type-Mini-Cushion-Ryan.jpg", 
           name: "라이언 리틀 얼굴쿠션", 
           price: 16000,
           quantity: 1
@@ -100,35 +100,6 @@ export default {
     setComma(value) {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
-
-    getProductNameToBeDeleted(productName){
-      this.productNameToBeDeleted = productName;
-    },
-
-    getTotalPrice(totalPrice){
-      this.totalPrice = totalPrice;
-    },
-
-    deleteProduct(productName){
-      for(let index=0; index<this.products.length; index++){
-        if(this.products[index].name == productName){
-          this.products.splice(index, 1);
-          break;
-        }
-      }
-    },
-
-    setQuantity(productName, quantity){
-      for(let index=0; index<this.products.length; index++){
-        if(this.products[index].name == productName){
-          this.products[index].quantity = quantity;
-        }
-      }
-    },
-
-    goToPurchasePage(){
-      this.$router.push('/PurchasePage')
-    }
   },
 }
 </script>
