@@ -197,6 +197,8 @@
 export default {
   data() {
     return {
+      userData: this.getUserData(),
+
       products:[
         { image: 'http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Electronic-Clock-Ryan&Choonsik.jpg', 
           name: "라이언과 춘식이의 전자시계", 
@@ -218,6 +220,21 @@ export default {
     }
   },
   methods:{
+
+    getUserData(){
+      fetch("http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/users/exist", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          user_id : this.$cookies.get('user_id'),
+      }),
+      })
+      .then((response) => response.json())
+      .then((data) => this.userData = data);
+    },
+
     setComma(value) {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
