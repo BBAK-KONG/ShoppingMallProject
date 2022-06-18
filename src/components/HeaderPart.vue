@@ -3,8 +3,15 @@
     <div id="header">
       <div class="header-inner">
         <div class="menu" align="right">
-          <router-link to="/LoginPage">로그인</router-link>
-          <router-link to="/SignUpPage">회원가입</router-link>
+          <div v-if="userId == null">
+              <router-link to="/LoginPage">로그인</router-link>
+              <router-link to="/SignUpPage">회원가입</router-link>
+          </div>
+          <div v-else>
+              <span>{{userId}}님 환영합니다.</span>
+              <router-link to="/" @click="logout">로그아웃</router-link>
+              
+          </div>
         </div> 
 
         <span calss="logo">
@@ -35,6 +42,29 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+    data(){
+        return{
+            userId: this.$cookies.get('user_id')
+      }
+    },
+
+    methods: {
+    
+    refresh(){
+      this.$router.go()
+    },
+
+    logout(){
+      this.$cookies.remove('user_id');
+      this.$router.go();
+    }
+  }
+}
+</script>
+
 
 <style>
 

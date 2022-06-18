@@ -65,9 +65,11 @@ export default {
                 return response.json();
             })
             .then(data => {
+                console.log(data);
                 this.isLoggedin = data["status"];
                 if(this.isLoggedin){        
-                    this.$session.set('userId', this.$refs.userId.value);
+                    this.$cookies.set('user_id', this.$refs.userId.value, 3600);
+                    this.$router.go();
                     this.$router.push('/');
                 }
                 else{
