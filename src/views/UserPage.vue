@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                       <!-- 상품가격 -->
-                      <td class="item">가격 : {{ product.price * product.quantity }}</td>
+                      <td class="item">가격 : {{ setComma(product.price * product.quantity) }}</td>
                     </tr>
                     <tr>
                       <!-- 구매일자-->
@@ -100,35 +100,6 @@ export default {
     setComma(value) {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
-
-    getProductNameToBeDeleted(productName){
-      this.productNameToBeDeleted = productName;
-    },
-
-    getTotalPrice(totalPrice){
-      this.totalPrice = totalPrice;
-    },
-
-    deleteProduct(productName){
-      for(let index=0; index<this.products.length; index++){
-        if(this.products[index].name == productName){
-          this.products.splice(index, 1);
-          break;
-        }
-      }
-    },
-
-    setQuantity(productName, quantity){
-      for(let index=0; index<this.products.length; index++){
-        if(this.products[index].name == productName){
-          this.products[index].quantity = quantity;
-        }
-      }
-    },
-
-    goToPurchasePage(){
-      this.$router.push('/PurchasePage')
-    }
   },
 }
 </script>
