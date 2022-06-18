@@ -197,6 +197,8 @@
 export default {
   data() {
     return {
+      userData: this.getUserData(),
+
       products:[
         { image: 'http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Electronic-Clock-Ryan&Choonsik.jpg', 
           name: "라이언과 춘식이의 전자시계", 
@@ -218,6 +220,21 @@ export default {
     }
   },
   methods:{
+
+    getUserData(){
+      fetch("http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/users/exist", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          user_id : this.$cookies.get('user_id'),
+      }),
+      })
+      .then((response) => response.json())
+      .then((data) => this.userData = data);
+    },
+
     setComma(value) {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
@@ -283,7 +300,26 @@ export default {
 
     getErrorMessage(){
       return "휴대폰 번호를 입력해주세요";
-    }
+    },
+
+    searchAddress() {
+      new window.daum.Postcode({
+        oncomplete: function(data) {
+          var addr = ''; // 주소 변수
+          //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+          if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+              addr = data.roadAddress;
+          } else { // 사용자가 지번 주소를 선택했을 경우(J)
+              addr = data.jibunAddress;
+          }
+          // 우편번호와 주소 정보를 해당 필드에 넣는다.
+          document.getElementById('postcode').value = data.zonecode;
+          document.getElementById("address").value = addr;
+          // 커서를 상세주소 필드로 이동한다.
+          document.getElementById("detailAddress").focus();
+        }
+      }).open();
+    },
   }
 }
 
@@ -384,12 +420,10 @@ export default {
 
   .shipping-information{
     width: 100%;
-    height: 400px;
   }
 
   .shipping-information-inner{
     width: 900px;
-    height: 400px;
     margin: 0 auto;
   }
 

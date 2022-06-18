@@ -37,7 +37,7 @@
                               <img src="@/assets/minus.png">
                             </button>
 
-                            <span class="quantity">{{ product.quantity }}</span>
+                            <span class="quantity">{{ product.count }}</span>
                             
                             <button type="button" class="quantity-btn" @click="plusQuantity(product.name)"> 
                               <img src="@/assets/plus.png">
@@ -118,7 +118,7 @@ export default {
       let sum = 0;
 
       for(let index=0; index<this.products.length; index++){
-        sum += this.products[index].price * this.products[index].quantity;
+        sum += this.products[index].price * this.products[index].count;
       } 
       this.subtotal = sum;
 
@@ -158,9 +158,9 @@ export default {
     },
 
     setQuantity(productName, event){
-      let quantity = event.target.value;
+      let count = event.target.value;
 
-      this.$emit('setQuantity', productName, quantity);
+      this.$emit('setQuantity', productName, count);
     },
 
     minusQuantity(productName){

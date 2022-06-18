@@ -10,7 +10,6 @@
           <div v-else>
               <span>{{userId}}님 환영합니다.</span>
               <router-link to="/" @click="logout">로그아웃</router-link>
-              
           </div>
         </div> 
 
@@ -20,12 +19,10 @@
           </router-link>
           <input class="searchInput" type="text">
           <span class="user-menu">
-            <router-link to="/ShoppingCartPage">
-              <img class="cart-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/cart.png"/>
-            </router-link>
-            <router-link to="/UserPage">
-              <img class="myPage-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/myPage.png"/>
-            </router-link>
+
+            <img class="cart-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/cart.png" @click="goToShoppingCartPage"/>
+            <img class="myPage-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/myPage.png" @click="goToUserPage"/>
+
           </span>
         </span>
 
@@ -50,9 +47,32 @@ export default {
             userId: this.$cookies.get('user_id')
       }
     },
-
     methods: {
-    
+
+    goToUserPage(){
+      if(this.$cookies.get('user_id') == null){
+        alert("로그인 후 이용해주세요");
+        return;
+      }
+      this.$router.push('/UserPage');
+    },
+
+    goToShoppingCartPage(){
+      if(this.$cookies.get('user_id') == null){
+        alert("로그인 후 이용해주세요");
+        return;
+      }
+      this.$router.push('/ShoppingCartPage');
+    },
+
+
+    checkLoggedIn(){
+      if(this.$cookies.get('user_id') == null){
+        alert("로그인 후 이용해주세요");
+        return false;
+      }
+    },
+
     refresh(){
       this.$router.go()
     },
