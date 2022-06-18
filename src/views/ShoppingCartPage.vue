@@ -9,6 +9,8 @@
   <ItemList :products="products" 
   @getProductNameToBeDeleted="getProductNameToBeDeleted" 
   @setQuantity="setQuantity"
+  @minusQuantity="minusQuantity"
+  @plusQuantity="plusQuantity"
   @getTotalPrice="getTotalPrice"/>
   <!-- 상품 삭제버튼 클릭시 삭제 여부를 한번 더 물음 -->
   <div class="modal fade" id="undeletableGuidanceModal" tabindex="-1" 
@@ -17,7 +19,7 @@
       <div class="modal-content">
         <!-- 모달창 안내 문구 -->
         <div class="modal-body">
-          <h5 style="margin: 50px 0px 50px 0px">선택하신 상품을 삭제하시겠습니까?</h5>
+          <h5 style="margin: 20px 0px 20px 0px; font-size:16px;">선택하신 상품을 삭제하시겠습니까?</h5>
         </div>
         <!-- 모달창 닫기 버튼 -->
         <div class="modal-footer">
@@ -40,12 +42,12 @@ export default {
   data() {
     return {
       products:[
-        { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
+        { image: "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Electronic-Clock-Ryan&Choonsik.jpg", 
           name: "라이언과 춘식이의 전자시계", 
           price: 49000,
           quantity: 2
         },
-        { image: require('@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg'), 
+        { image: "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Face-Type-Mini-Cushion-Ryan.jpg", 
           name: "라이언 리틀 얼굴쿠션", 
           price: 16000,
           quantity: 1
@@ -84,8 +86,41 @@ export default {
       for(let index=0; index<this.products.length; index++){
         if(this.products[index].name == productName){
           this.products[index].quantity = quantity;
+          break;
         }
       }
+    },
+
+    minusQuantity(productName){
+      let index;
+
+      for(index=0; index<this.products.length; index++){
+        if(this.products[index].name == productName){
+          break;
+        }
+      }
+
+      if(this.products[index].quantity == 1){
+        return;
+      }
+
+      this.products[index].quantity-=1;
+    },
+
+    plusQuantity(productName){
+      let index;
+
+      for(index=0; index<this.products.length; index++){
+        if(this.products[index].name == productName){
+          break;
+        }
+      }
+
+      if(this.products[index].quantity == 300){
+        return;
+      }
+
+      this.products[index].quantity++;
     },
 
     goToPurchasePage(){
@@ -103,13 +138,11 @@ export default {
   } 
 
   .menu-inner {
-    width: 1200px;
+    width: 900px;
     height: 50px;
     margin: 0 auto;
-    border-bottom: 3px solid;
-    border-color: #d2d2d2;
     margin-top: 70px;
-    font-size: 30px;
+    font-size: 20px;
   }
   
   .buy-btn {
@@ -118,7 +151,7 @@ export default {
     border: 0;
     background-color: #fb2e45;
     color: white;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: bold;
   }
 </style>

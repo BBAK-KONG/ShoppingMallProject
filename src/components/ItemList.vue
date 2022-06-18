@@ -1,4 +1,6 @@
 <template>
+  <!-- 주문 제품 목록 맨 위 구분선 -->
+  <div class="delimiter-line" style="margin-top:10px;"></div>
   <!-- 주문 제품 목록 -->
   <div class="product-list">
     <div class="product-list-inner" v-for="(product, index) in products" :key="product" :index="index">
@@ -21,18 +23,26 @@
                       </button>
                     </tr>
                     <tr>
-                      <div class="row">
+                      <!-- 상품 총 가격(상품가격*구매량) -->
+                      <div class="subtotal">
+                        <td class="price">{{this.setComma(product.price * product.quantity)}}원</td>
+                      </div>
+                    </tr>
+                    <tr>
+                      <div class="row" style="margin-top:10px;">
                         <!-- 구매 수량 선택 -->
-                        <div class="col-xs-6 quantity-selection">
-                          <select class="form-select" aria-label="quantity selection" 
-                          @change="setQuantity(product.name, $event)" style="width:100px; font-size:20px;">
-                            <option value="" selected disabled hidden>{{ product.quantity }}</option>
-                            <option v-for="quantity in maxQuantity" :key="quantity" :value=quantity>{{quantity}}</option>
-                          </select>
-                        </div>
-                        <!-- 상품 총 가격(상품가격*구매량) -->
-                        <div class="col-xs-6 subtotal">
-                          <td class="price">{{this.setComma(product.price * product.quantity)}}원</td>
+                        <div class="col-6">
+                          <div class="row">
+                            <button type="button" class="quantity-btn" @click="minusQuantity(product.name)"> 
+                              <img src="@/assets/minus.png">
+                            </button>
+
+                            <span class="quantity">{{ product.quantity }}</span>
+                            
+                            <button type="button" class="quantity-btn" @click="plusQuantity(product.name)"> 
+                              <img src="@/assets/plus.png">
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </tr>
@@ -70,14 +80,16 @@
           </tr>
           <tr>
             <!-- 회원이 결제할 총 금액 -->
-            <th class="item" scope="row" style="font-size: 30px;">
+            <th class="item" scope="row" style="font-size: 22px;">
               총 결제금액
             </th>
-            <td class="price" style="font-size: 30px">
+            <td class="price" style="font-size: 22px">
               <span><strong>{{getTotalPrice()}}</strong></span></td>
           </tr>
         </tbody>
       </table>
+      <!-- 결제금액 안내 맨아래 구분선 -->
+      <div class="delimiter-line" style="margin-top:10px;"></div>
     </div>
   </div>
 </template>
@@ -138,8 +150,17 @@ export default {
       let quantity = event.target.value;
 
       this.$emit('setQuantity', productName, quantity);
-    }
-  }
+    },
+
+    minusQuantity(productName){
+      this.$emit('minusQuantity', productName);
+      
+    },
+
+    plusQuantity(productName){
+      this.$emit('plusQuantity', productName);
+    },
+  },
 }
 </script>
 
@@ -148,9 +169,16 @@ export default {
     float: left;
   }
 
+  .delimiter-line{
+    width: 900px;
+    border-bottom: 3px solid; 
+    border-color: #d2d2d2;
+    margin: 0 auto;
+  }
+
   .product-list-inner {
-    width: 1200px;
-    height: 200px;
+    width: 900px;
+    height: 180px;
     border-bottom: 3px solid;
     border-color: #f0f0f0;
     padding-right:0px;
@@ -160,7 +188,7 @@ export default {
 
   .product-list img{
     float: left;
-    height: 200px;
+    height: 180px;
     border-bottom: 3px solid;
     border-color: #f0f0f0;
   }
@@ -168,6 +196,7 @@ export default {
   .card-body{
     width: 100%;
     height: 100px;
+    padding-top:0px;
     padding-right:0px;
   }
 
@@ -182,22 +211,20 @@ export default {
   }
 
   .price-information-inner {
-    width: 1200px;
+    width: 900px;
     height: 170px;
     margin: 0 auto;
-    border-bottom: 3px solid;
-    border-color: #d2d2d2;
   }
 
   .item{
     float: left;
-    font-size: 25px;
+    font-size: 16px;
     border-bottom: none;
   }
 
   .price{
     float: right;
-    font-size: 25px;
+    font-size: 16px;
     border-bottom: none;
   }
 
@@ -210,8 +237,33 @@ export default {
     float: left;
   }
 
+  .quantity{
+    margin: 0px 0px 0px 25px; 
+    width:70px; 
+    font-size:16px;            
+    border: 3px solid;
+    border-color: #f0f0f0;
+  }
+
+  .quantity-btn{
+    width:25px; 
+    height:25px; 
+    border-radius:100%; 
+    cursor: pointer;
+    background-color:transparent;
+    border:0;
+  }
+
+  .quantity-btn img{
+    width:25px; 
+    height:25px; 
+    background-color:transparent; 
+    border:0
+  }
+
   .subtotal{
-    float: right;
+    float: left;
+    margin-top: 5px; 
   }
 
 </style>
