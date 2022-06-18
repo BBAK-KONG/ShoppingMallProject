@@ -1,19 +1,18 @@
 <template>
   <div class="title">
-    <h2>주간 베스트 상품</h2>
-    <h5>BBAK_KONG's 주간 인기 상품을 만나보세요!</h5>
+    <div class="main-title">주간 베스트 상품</div>
+    <div class="sub-title">BBAK_KONG's 주간 인기 상품을 만나보세요!</div>
   </div>
 
   <div class="container">
-    <div class="row g-5">
+    <div class="row g-4">
       <div class="col-4" v-for="(product, index) in products" :key="product" :index="index" >
         <div class="card">
           <div class="rank-box"> <span class="rank">{{index + 1}}</span></div>
           <img :src="product.image" class="card-img-top" alt="product.name">
           <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{setComma(product.price)}}원</p>  
-            <a href="#" class="btn btn-primary">구매하기</a>
+            <p class="card-title">{{ product.name }}</p>
+            <p class="card-text">{{setComma(product.price)}}원</p>
           </div>
         </div>
       </div>
@@ -65,6 +64,15 @@ export default {
     margin: 70px 0px 70px 0px;
   }
 
+  .main-title{
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .sub-title{
+    font-size: 14px;
+  }
+
   .card {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px 0px;
     background: #fff;
@@ -80,21 +88,30 @@ export default {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px 0px;
   }
 
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-text{
+    font-size: 16px;
+    font-weight: bold;
+  }
+
   .card .rank-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     background-color: black;
     color: white;
     position: static;
-    transition: all ease
+    transition: all ease;
   }
 
   .card .rank{
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 300;
   }
 
