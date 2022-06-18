@@ -77,7 +77,10 @@ export default {
                 }
             });
         },
+        getUserId(){
+            return this.userId;
         }
+    }
 }
 </script>
 

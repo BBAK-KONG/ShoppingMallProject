@@ -81,12 +81,12 @@ export default {
   data() {
     return {
       products:[
-        { image: require('@/assets/best-seller/Electronic-Clock-Ryan&Choonsik.jpg'), 
+        { image: "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Electronic-Clock-Ryan&Choonsik.jpg", 
           name: "라이언과 춘식이의 전자시계", 
           price: 49000,
           quantity: 2
         },
-        { image: require('@/assets/best-seller/Face-Type-Mini-Cushion-Ryan.jpg'), 
+        { image: "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/Face-Type-Mini-Cushion-Ryan.jpg", 
           name: "라이언 리틀 얼굴쿠션", 
           price: 16000,
           quantity: 1

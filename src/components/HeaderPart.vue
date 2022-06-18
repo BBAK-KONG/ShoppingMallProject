@@ -21,10 +21,10 @@
           <input class="searchInput" type="text">
           <span class="user-menu">
             <router-link to="/ShoppingCartPage">
-              <img class="cart-img" src = "@/assets/header-image/cart.png"/>
+              <img class="cart-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/cart.png"/>
             </router-link>
             <router-link to="/UserPage">
-              <img class="myPage-img" src = "@/assets/header-image/myPage.png"/>
+              <img class="myPage-img" src = "http://ec2-13-125-74-101.ap-northeast-2.compute.amazonaws.com:3000/images/myPage.png"/>
             </router-link>
           </span>
         </span>
@@ -133,7 +133,7 @@ export default {
   width: 25%;
   display: flex;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   text-decoration-line: none;
   color: black;
 }
