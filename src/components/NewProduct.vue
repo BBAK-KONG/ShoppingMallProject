@@ -1,10 +1,10 @@
 <template>
   <div class="title">
-    <h2>신상품</h2>
-    <h5>BBAK_KONG's 신상품!</h5>
+    <div class="main-title">신상품</div>
+    <div class="sub-title">BBAK_KONG's 신상품!</div>
   </div>
   <div class="container">
-    <div class="row g-5">
+    <div class="row g-4">
       <div class="col-4" v-for="(product, index) in products" :key="product" :index="index">
         <div class="card">
           <div class="card-header bg-white border-bottom-0">
@@ -12,9 +12,8 @@
           </div>
           <img :src="product.image" class="card-img-top" alt="product.name">
           <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{setComma(product.price)}}원</p>  
-            <a href="#" class="btn btn-primary">구매하기</a>
+            <p class="card-title">{{ product.name }}</p>
+            <p class="card-text">{{setComma(product.price)}}원</p>
           </div>
         </div>
       </div>
@@ -51,7 +50,6 @@ export default {
   },
 }
 </script>
->
 
 <style>
   .title{
@@ -74,7 +72,7 @@ export default {
   }
 
   .card .new-mark{
-    font-size: 30px;
+    font-size: 16px;
     font-weight: 300;
   }
 
